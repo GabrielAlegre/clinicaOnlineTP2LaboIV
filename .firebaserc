@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "clinicaonlinetplaboiv": {
+      "hosting": {
+        "tpClinicaOnline": [
+          "clinicaonlinetplaboiv"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "clinicaonlinetplaboiv"
+  }
+}

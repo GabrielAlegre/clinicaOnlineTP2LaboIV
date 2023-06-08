@@ -1,0 +1,74 @@
+<!-- <p>login works!</p> -->
+
+<section class="h-100 gradient-form">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100" style="margin-top: 35px;">
+      <div class="col-xl-9">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0" style=" border-radius: 50px;
+            
+            box-shadow: 0 0 16px rgb(7, 46, 88);">
+            <div class="col-lg-6" style="background-color: #d5e8b1;">
+              <div class="card-body p-md-4 mx-md-2" style="margin-bottom: 0px; padding-bottom: 0px;">
+
+                <p class="text-center h1 fw-bold mx-1 mx-md-4 mt-1">Iniciar sesión</p>
+                <div class="text-center">
+                  <img src="../../../assets/logoLoginClinica.png" style="width: 130px;" alt="logo">
+                  <!-- <h4 class="mt-1 mb-2 pb-1">Alumno: Gabriel Alegre</h4> -->
+                </div>
+                <h4 class="mt-1 mb-2 pb-1 text-center">Alumno: Gabriel Alegre</h4>
+                <h6 class="text-center">Por favor, ingrese a su cuenta</h6>
+                <label class="">Correo:</label>
+                <div class="form-outline mb-4 user-box group log-input" style="background-color: #d5e8b1;">
+                  <input (input)="validarCorreo()" [ngClass]="{'is-invalid': !correoValido, 'is-valid': correoValido}"
+                    [(ngModel)]="emailBind" type="text" id="form2Example11" class="form-control"
+                    placeholder="Ingrese su Correo" />
+                  <div class="invalid-feedback" *ngIf="emailBind.length > 0">
+                    Correo invalido (ana@ejemplo.com)
+                  </div>
+                  <div class="valid-feedback">
+                    Correo válido
+                  </div>
+                </div>
+
+                <label class="">Contraseña:</label>
+                <div class="form-outline mb-4 user-box group log-input" style="background-color: #d5e8b1;">
+                  <input (input)="validarPass()" [ngClass]="{'is-invalid': !passValido, 'is-valid': passValido}"
+                    [(ngModel)]="contraBind" type="password" id="form2Example" class="form-control"
+                    placeholder="Ingrese contraseña" />
+                  <div class="invalid-feedback" *ngIf="contraBind.length > 0">
+                    Ingrese una contraseña válida
+                  </div>
+                  <div class="valid-feedback">
+                    Contraseña válido
+                  </div>
+                </div>
+
+                <div class="text-center pt-1 mb-2 pb-1 botonIngresarDiv">
+                  <button id="botonIngresar" class="btn btn-primary gradient-custom-2 mb-3 " type="button"
+                    (click)="logear()">Ingresar</button>
+                </div>
+
+
+                <div class="pb-4 mb-3" style="display: flex; justify-content: flex-start ;">
+                  <p class="mb-0 me-3" style="padding-left: 10px; padding-top: 28px; font-size: 17px;">Aun no tenes
+                    cuenta?</p>
+                  <button style="margin-top: 20px; width: 200px;" type="button" class="btn btn-outline-danger"
+                    routerLink="../registro">Registrate</button>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2 text-center">
+              <app-listado-usuarios (botonClickeadoUsuarios)="clickListadoUsuarios($event)"></app-listado-usuarios>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</section>

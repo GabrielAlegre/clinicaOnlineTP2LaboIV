@@ -1,0 +1,96 @@
+
+
+.main {
+  width: 480px;
+  height: 730px;
+  /* background-color: rgba(255, 255, 255, 0.13); */
+  /* backdrop-filter: blur(10px); */
+  overflow: hidden;
+  border-radius: 10px;
+  /* box-shadow: 5px 20px 50px #000; */
+}
+
+
+
+
+
+.user-buttons {
+background: rgb(32, 121, 120);
+position: absolute;
+margin: 0 auto;
+top: 100%;
+left: 0%;
+display: flex;
+flex-wrap: wrap;
+border-radius: 10px;
+border: #fff 3px solid;
+margin-top: 10px;
+}
+
+.user-button {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+/* margin: 10px; */
+border-radius: 50%;
+/* height: 10%; */
+/* width: 10%; */
+
+}
+
+.user-button-nuevo {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+margin: 10px;
+border-radius: 50%;
+height: 100%;
+width:60%;
+transition: transform 0.2s ease-in-out;
+}
+
+.user-button-nuevo:hover{
+transform: translateY(-5px);
+}
+
+.user-image {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+object-fit: cover;
+}
+
+.user-name {
+font-family: 'Raleway', sans-serif;
+margin-top: 5px;
+font-size: 12px;
+color: #fff;
+font-weight: bolder;
+text-transform: uppercase;
+text-shadow: 2px 2px 2px #000;
+}
+
+.tituloEspecialidad {
+  font-family: 'Raleway', sans-serif;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #000000;
+  font-weight: bolder;
+  text-transform: uppercase;
+  /* text-shadow: 2px 2px 2px #000; */
+  }
+.fondoParaTextos{
+  width: 95%;
+  display: block;
+  margin: 0 auto;
+  /* background-color; */
+  box-shadow: 0px 5px 5px rgb(185, 3, 161);
+  padding: 5px 10px;
+  /* margin-top: 0.1rem; */
+  border-radius: 20px;
+}
+

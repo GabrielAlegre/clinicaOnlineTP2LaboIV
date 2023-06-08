@@ -1,0 +1,211 @@
+.fondoParaTextos{
+  width: max-content;
+  display: block;
+  margin: 0 auto;
+  background-color: rgba(5, 81, 81, 0.87);
+  box-shadow: 0px 5px 5px rgb(133, 62, 62);
+  padding: 5px 15px;
+  /* margin-top: 0.1rem; */
+  border-radius: 20px;
+  color: #fdfcfc;
+}
+
+body{
+margin: 0;
+padding: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+font-family: 'Jost', sans-serif;
+/* background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); */
+/* background: url("https://infraestructuramedica.mx/wp-content/uploads/2022/09/centro-oncologico.png") no-repeat center/ cover; */
+/* background: url("https://www.hksinc.com/wp-content/uploads/2020/04/QueenMary.jpg") no-repeat center/ cover; */
+background: url(../../../assets/especialistaFondo.webp) no-repeat center/ cover;
+}
+
+.fondoBodyEspecialista{
+  background: url(../../../assets/especialistaFondo.webp) no-repeat center/ cover;
+}
+
+.fondoBodyPaciente{
+  background: url("https://www.hksinc.com/wp-content/uploads/2020/04/QueenMary.jpg") no-repeat center/ cover;
+}
+
+.main {
+  width: 700px;
+  height: 800px;
+  /* background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover; */
+  /* background-color: rgba(59, 89, 132, 0.382);*/
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); 
+  border: 1px solid black;
+  box-shadow: 0 0 16px rgb(1, 1, 1);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  border-radius: 10px;
+  /* box-shadow: 5px 20px 50px #000; */
+}
+
+#chkEspecialista, #chk{
+display: none;
+}
+
+.registroPaciente {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+label {
+  color: #ffffff;
+  font-size: 40px;
+  text-transform: uppercase;
+  font-weight: bolder;
+  justify-content: center;
+  display: flex;
+  margin: 25px;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+input {
+  width: 60%;
+  height: 40px;
+  background: #ffffff;
+  justify-content: center;
+  display: flex;
+  margin: 15px auto;
+  padding: 10px;
+  outline: none;
+  border-radius: 5px;
+  font-family: "Montserrat";
+}
+
+button {
+  width: 50%;
+  height: 40px;
+  margin: 20px auto;
+  justify-content: center;
+  display: block;
+  color: #fff;
+  background: #7c7c7c;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: .2s ease-in;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #bbe4bc;
+}
+
+.registroEspecialista {
+  height: 800px;
+  background: #a1aba6;
+  border-radius: 60% / 10%;
+  transform: translateY(-120px);
+  transition: .8s ease-in-out;
+}
+
+.registroEspecialista label {
+  color: #000000;
+  transform: scale(.6);
+}
+
+#chkEspecialista:checked ~ .registroEspecialista{
+transform: translateY(-850px);
+border-radius: 0;
+position: relative;
+}
+
+#chkEspecialista:checked ~ .registroPaciente{
+transform: translateY(705px);
+border-radius: 60% / 10%;
+transition: .8s ease-in-out;
+z-index: 2;
+background: rgba(10, 104, 104, 0.87);
+
+}
+
+
+#chkEspecialista:checked ~ .registroEspecialista label{
+transform: scale(1);	
+}
+#chkEspecialista:checked ~ .registroPaciente label{
+transform: scale(.9);
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+
+#chk:checked ~ .registroEspecialista label{
+transform: scale(.9);
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.text-focus-in {
+  -webkit-animation: text-focus-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+    both;
+  animation: text-focus-in 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+@-webkit-keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+
+.btn-reiniciar {
+  /* padding: 1.6em 3em; */
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  background-color: rgb(72, 151, 208);
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  display: block;
+  margin: 0 auto 0.5rem auto;
+  margin-top: 20px;
+}
+
+.btn-reiniciar:hover {
+  background-color: #0d7206;
+  box-shadow: 0px 15px 20px rgba(138, 171, 201, 0.4);
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.btn-reiniciar:active {
+  transform: translateY(-1px);
+}

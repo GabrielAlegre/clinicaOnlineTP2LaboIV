@@ -1,0 +1,296 @@
+<app-loading *ngIf="mostrarSpinner"></app-loading>
+<body
+    [ngClass]="{'fondoBodyEspecialista': mostrarListadoEspecialidades, 'fondoBodyPaciente': !mostrarListadoEspecialidades}">
+    <div style="margin-top: 90px;" class="main">
+        <input (change)="handleChangeActivar($event)" name="opcionRegistro" type="radio" id="chkEspecialista"
+            aria-hidden="true">
+        <input (change)="handleChangeActivar($event)" name="opcionRegistro" type="radio" id="chk" aria-hidden="true"
+            checked>
+
+        <div class="registroPaciente text-focus-in">
+            <form [formGroup]="form" (ngSubmit)="guardar(true)" class="needs-validation" novalidate>
+
+                <label
+                    style="font-size: 25px; margin-top: 25px; margin-left: 25px; margin-right: 25px; margin-bottom: 0px;"
+                    for="chk" aria-hidden="true">Registrar paciente</label>
+
+                <div class="d-flex flex-wrap">
+                    <div class="flex-column" style="flex: 2;">
+                        <div>
+                            <div>
+                                <input (input)="validarName()"
+                                    [ngClass]="{'is-invalid': !nameValido, 'is-valid': nameValido}" style="width: 90%;"
+                                    type="text" name="txt" placeholder="Nombre" required
+                                    class="form-control text-success" formControlName="nom">
+                                <div class="invalid-feedback" style="margin-left: 10px; margin-top: 0px;"
+                                    *ngIf="form.controls['nom'].value.length > 0">
+                                    <strong>Nombre invalido (3 - 15 caracteres)</strong>
+                                </div>
+                            </div>
+
+                            <div>
+                                <input (input)="validarApellido()"
+                                    [ngClass]="{'is-invalid': !apellidoValido, 'is-valid': apellidoValido}"
+                                    style="width: 90%;" type="text" name="txt" placeholder="Apellido" required
+                                    class="form-control" formControlName="ap">
+                                <div class="invalid-feedback" style="margin-left: 10px; margin-top: 0px;"
+                                    *ngIf="form.controls['ap'].value.length > 0">
+                                    <strong>Apellido invalido (3 - 15 caracteres)</strong>
+                                </div>
+                                <!-- <div style="margin-left: 10px; margin-top: 0px;" class="valid-feedback">
+                                    <strong>Apellido válido</strong>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex-column" style="flex: 2;">
+                        <div>
+                            <div>
+                                <input (input)="validarEdad()"
+                                    [ngClass]="{'is-invalid': !edadValidada, 'is-valid': edadValidada}"
+                                    style="width: 90%;" type="number" name="nmb" placeholder="Edad" required
+                                    class="form-control" formControlName="ed">
+                                <div class="invalid-feedback" style="margin-left: 10px; margin-top: 0px;"
+                                    *ngIf="form.controls['ed'].value != 0 && form.controls['ed'].value != null">
+                                    <strong>Ingrese una edad válida (18 - 99)</strong>
+                                </div>
+                                <!-- <div style="margin-left: 10px;" class="valid-feedback">
+                                    <strong>Edad válida</strong>
+                                </div> -->
+                            </div>
+
+                            <div>
+                                <input (input)="validarDni()" style="width: 90%;" type="number" name="nmb"
+                                    placeholder="DNI" required
+                                    [ngClass]="{'is-invalid': !dniValido, 'is-valid': dniValido}" class="form-control"
+                                    formControlName="dni">
+                                <div style="margin-left: 10px; margin-top: 0px;" class="invalid-feedback"
+                                    *ngIf="form.controls['dni'].value != 0 && form.controls['dni'].value != null">
+                                    <strong>DNI invalido (8 o 7 numeros ej: 40901903)</strong>
+                                </div>
+                                <!-- <div style="margin-left: 10px;" class="valid-feedback">
+                                    <strong>DNI válido</strong>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <input style="width: 95%;" (input)="validarCorreo()"
+                        [ngClass]="{'is-invalid': !correoValido, 'is-valid': correoValido}" type="email" name="email"
+                        placeholder="Mail" required class="form-control" formControlName="mail">
+                    <div class="invalid-feedback" *ngIf="form.controls['mail'].value.length > 0"
+                        style="margin-left: 12px; margin-top: 0px;">
+                        <strong>Correo invalido (tito@ejemplo.com)</strong>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-wrap">
+                    <div class="flex-column" style="flex: 2;">
+                        <div>
+                            <div>
+                                <input (input)="validarPass()"
+                                    [ngClass]="{'is-invalid': !passValido, 'is-valid': passValido}" style="width: 90%;"
+                                    type="password" name="pswd" placeholder="Clave" required class="form-control"
+                                    formControlName="pw">
+                                <div class="invalid-feedback" *ngIf="form.controls['pw'].value.length > 0"
+                                    style="margin-left: 10px; margin-top: 0px;">
+                                    <strong>Ingrese una contraseña válida<br>(minimo 6 caracteres)</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex-column" style="flex: 2;">
+                        <div>
+                            <div>
+                                <input (input)="validarPassConf()"
+                                    [ngClass]="{'is-invalid': !passValidoConf, 'is-valid': passValidoConf}"
+                                    style="width: 90%;" type="password" name="pswd" placeholder="Clave" required
+                                    class="form-control" formControlName="pwConf">
+                                <div class="invalid-feedback" *ngIf="form.controls['pwConf'].value.length > 0"
+                                    style="margin-left: 10px; margin-top: 0px;">
+                                    <strong>Las contraseñas deben coincidir</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <input style="width: 95%;" (input)="validarObraSocial()"
+                        [ngClass]="{'is-invalid': !obraSocialValida, 'is-valid': obraSocialValida}" type="text"
+                        name="txt" placeholder="Obra Social" required="" class="form-control" formControlName="os">
+                    <div style="margin-left: 10px;" class="invalid-feedback"
+                        *ngIf="form.controls['os'].value.length > 0">
+                        <strong>Obra social invalida (3 - 20 caracteres)</strong>
+                    </div>
+                </div>
+
+
+                <!-- Input para seleccionar las imágenes -->
+                <label for="file" style="font-size:20px; margin-bottom: -2%;">INGRESE 2 IMAGENES</label>
+                <input type="file" id="fileInput" name="ft" accept="image/*" multiple
+                    (change)="handleFileInputChange($event)" class="form-control" formControlName="ft" required>
+                <small style="color: rgb(226, 53, 53); margin-left: 20%; top: 0;"
+                    *ngIf="form.controls['ft'].errors?.['required'] && form.controls['ft'].touched">
+                    Ingrese 2 imágenes
+                </small>
+
+                <!-- Div para mostrar las imágenes seleccionadas -->
+                <div class="images" style="align-items: center;display: flex;justify-content: center;">
+                    <img [src]="image" *ngFor="let image of images" style="width: 100px;height: 100px;">
+                </div>
+
+                <button class="btn-reiniciar" type="submit">Registrar</button>
+            </form>
+
+        </div>
+
+        <!-- ESPECIALISTA -->
+        <div class="registroEspecialista">
+            <form [formGroup]="form" (ngSubmit)="guardar(false)" class="needs-validation" novalidate>
+
+                <label
+                    style="font-size: 25px; margin-top: 25px; padding-top: 18px; margin-left: 25px; margin-right: 25px; margin-bottom: 30px;"
+                    for="chkEspecialista" aria-hidden="true">Registrar especialista</label>
+
+                <div class="d-flex flex-wrap">
+                    <div class="flex-column" style="flex: 2;">
+                        <div>
+                            <div>
+                                <input (input)="validarName()"
+                                    [ngClass]="{'is-invalid': !nameValido, 'is-valid': nameValido}" style="width: 90%;"
+                                    type="text" name="txt" placeholder="Nombre" required
+                                    class="form-control text-success" formControlName="nom">
+                                <div class="invalid-feedback" style="margin-left: 10px; margin-top: 0px;"
+                                    *ngIf="form.controls['nom'].value.length > 0">
+                                    <strong>Nombre invalido (3 - 15 caracteres)</strong>
+                                </div>
+                            </div>
+
+                            <div>
+                                <input (input)="validarApellido()"
+                                    [ngClass]="{'is-invalid': !apellidoValido, 'is-valid': apellidoValido}"
+                                    style="width: 90%;" type="text" name="txt" placeholder="Apellido" required
+                                    class="form-control" formControlName="ap">
+                                <div class="invalid-feedback" style="margin-left: 10px; margin-top: 0px;"
+                                    *ngIf="form.controls['ap'].value.length > 0">
+                                    <strong>Apellido invalido (3 - 15 caracteres)</strong>
+                                </div>
+                                <!-- <div style="margin-left: 10px; margin-top: 0px;" class="valid-feedback">
+                                    <strong>Apellido válido</strong>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex-column" style="flex: 2;">
+                        <div>
+                            <div>
+                                <input (input)="validarEdad()"
+                                    [ngClass]="{'is-invalid': !edadValidada, 'is-valid': edadValidada}"
+                                    style="width: 90%;" type="number" name="nmb" placeholder="Edad" required
+                                    class="form-control" formControlName="ed">
+                                <div class="invalid-feedback" style="margin-left: 10px; margin-top: 0px;"
+                                    *ngIf="form.controls['ed'].value != 0 && form.controls['ed'].value != null">
+                                    <strong>Ingrese una edad válida (18 - 99)</strong>
+                                </div>
+                                <!-- <div style="margin-left: 10px;" class="valid-feedback">
+                                    <strong>Edad válida</strong>
+                                </div> -->
+                            </div>
+
+                            <div>
+                                <input (input)="validarDni()" style="width: 90%;" type="number" name="nmb"
+                                    placeholder="DNI" required
+                                    [ngClass]="{'is-invalid': !dniValido, 'is-valid': dniValido}" class="form-control"
+                                    formControlName="dni">
+                                <div style="margin-left: 10px; margin-top: 0px;" class="invalid-feedback"
+                                    *ngIf="form.controls['dni'].value != 0 && form.controls['dni'].value != null">
+                                    <strong>DNI invalido (8 o 7 numeros ej: 40901903)</strong>
+                                </div>
+                                <!-- <div style="margin-left: 10px;" class="valid-feedback">
+                                    <strong>DNI válido</strong>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <input style="width: 95%;" (input)="validarCorreo()"
+                        [ngClass]="{'is-invalid': !correoValido, 'is-valid': correoValido}" type="email" name="email"
+                        placeholder="Mail" required class="form-control" formControlName="mail">
+                    <div class="invalid-feedback" *ngIf="form.controls['mail'].value.length > 0"
+                        style="margin-left: 12px; margin-top: 0px;">
+                        <strong>Correo invalido (tito@ejemplo.com)</strong>
+                    </div>
+                    <!-- <div class="valid-feedback" style="margin-left: 12px; margin-top: 0px;">
+                        <strong>Correo válido</strong>
+                    </div> -->
+                </div>
+
+                <div class="d-flex flex-wrap">
+                    <div class="flex-column" style="flex: 2;">
+                        <div>
+                            <div>
+                                <input (input)="validarPass()"
+                                    [ngClass]="{'is-invalid': !passValido, 'is-valid': passValido}" style="width: 90%;"
+                                    type="password" name="pswd" placeholder="Clave" required class="form-control"
+                                    formControlName="pw">
+                                <div class="invalid-feedback" *ngIf="form.controls['pw'].value.length > 0"
+                                    style="margin-left: 10px; margin-top: 0px;">
+                                    <strong>Ingrese una contraseña válida<br>(minimo 6 caracteres)</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex-column" style="flex: 2;">
+                        <div>
+                            <div>
+                                <input (input)="validarPassConf()"
+                                    [ngClass]="{'is-invalid': !passValidoConf, 'is-valid': passValidoConf}"
+                                    style="width: 90%;" type="password" name="pswd" placeholder="Clave" required
+                                    class="form-control" formControlName="pwConf">
+                                <div class="invalid-feedback" *ngIf="form.controls['pwConf'].value.length > 0"
+                                    style="margin-left: 10px; margin-top: 0px;">
+                                    <strong>Las contraseñas deben coincidir</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center;">
+                    <input style="width:95%;" type="text" readonly name="txt" placeholder="Especialidad"
+                        class="form-control" [value]="especialidad ? especialidades : 'Elegir especialidad'" />
+                    <!-- <button style="width:30%; background: rgba(10, 104, 104, 0.87);" type="button" class="btn btn-primary">Primary</button> -->
+                </div>
+
+
+                <label for="file" style="font-size:20px; margin-bottom: -2%; margin-top: 0%;">INGRESE UNA IMAGEN</label>
+                <input type="file" id="fileInputEsp" name="ft" accept="image/*"
+                    (change)="handleFileInputChangeEsp($event)" class="form-control" formControlName="ft" required>
+                <small style="color: rgb(226, 53, 53); margin-left: 20%; top: 0;"
+                    *ngIf="form.controls['ft'].errors?.['required'] && form.controls['ft'].touched">
+                    Ingrese una imagen
+                </small>
+
+
+                <div class="image" style="align-items: center;display: flex;justify-content: center;">
+                    <img [src]="image" *ngIf="image!=''" style="width: 100px;height: 100px;">
+                </div>
+
+                <!-- <button type="submit">Registrar</button> -->
+                <button class="btn-reiniciar" type="submit">Registrar</button>
+            </form>
+        </div>
+    </div>
+    <div *ngIf="mostrarListadoEspecialidades">
+        <app-especialidades (botonClickeado)="clickListado($event)"></app-especialidades>
+    </div>
+</body>

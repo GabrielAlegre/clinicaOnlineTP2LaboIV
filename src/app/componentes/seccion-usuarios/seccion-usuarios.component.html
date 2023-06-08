@@ -1,0 +1,80 @@
+<div class="listado-container">
+    <div style="padding-top: 4rem;" *ngIf="!formEspecialista && !formPaciente && !formAdministrador">
+        <h2 class="fondoParaTextos" style="margin-bottom: 35px; margin-top: 55px;">LISTADO DE USUARIOS</h2>
+        <table class="table contenedor-tabla container">
+            <thead>
+                <tr>
+                    <th scope="col">PERFIL</th>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">APELLIDO</th>
+                    <th scope="col">ACCIÓN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tr" *ngFor="let user of usersList">
+                    <td *ngIf="user.hasOwnProperty('especialidad')" style="text-transform: upperCase; width: 280px;">
+                        <span>Especialista</span>
+                    </td>
+                    <td *ngIf="user.hasOwnProperty('obraSocial')" style="text-transform: upperCase; width: 280px;">
+                        <span>Paciente</span>
+                    </td>
+                    <td *ngIf="!user.hasOwnProperty('obraSocial') && !user.hasOwnProperty('especialidad')"
+                        style="text-transform: upperCase; width: 280px;">
+                        <span>Administrador</span>
+                    </td>
+                    <td style=" width: 200px;">
+                        <span>{{ user.nombre }}</span>
+                    </td>
+                    <td style=" width: 280px;">
+                        <span>{{ user.apellido }}</span>
+                    </td>
+                    <td style=" width: 280px;">
+                        <div style="display: flex; justify-content: center; align-items: center;"
+                            *ngIf="user.hasOwnProperty('especialidad')">
+                            <button class="btn-juegos btn-habilitado" *ngIf="!user.habilitado"
+                                (click)="updateUser(user, 1)">
+                                <strong>Habilitar</strong>
+                            </button>
+                            <button class="btn-juegos btn-noHabilitado" *ngIf="user.habilitado"
+                                (click)="updateUser(user, 2)">
+                                <strong>Deshabilitar</strong>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div class=" intentos">
+            <p style="font-size: 30px;" class="intentosTextos">
+                ¡Registra usuarios!
+                <span style="font-size: 20px;" class="intentosTextos">¡Puede registrar usuarios ahora mismo! Seleccione que
+                    tipo
+                    de usuario desea registrar!</span>
+            </p>
+            <div class="botonesRegistros">
+                <button style="color: white; background-color: #490a91" class="btn-juegos"
+                    (click)="goToFormPaciente()">Paciente</button>
+                <button style="color: white; background-color: #490a91" class="btn-juegos"
+                    (click)="goToFormEspecialista()">Especialista</button>
+                <button style="color: white; background-color: #490a91" class="btn-juegos"
+                    (click)="goToFormAdministrador()">Administrador</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="registro-paciente" *ngIf="formEspecialista || formPaciente">
+        <button class="btn-volver" (click)="goToRegistro()">
+            Volver a la seccion de usuarios
+        </button>
+        <app-registro [queQuiereRegistrar]="queQuiereRegistrar"></app-registro>
+    </div>
+
+    <div class="registro-paciente" *ngIf="formAdministrador">
+        <button class="btn-volver" (click)="goToRegistro()">
+            Volver a la seccion de usuarios
+        </button>
+        <app-registro-administrador></app-registro-administrador>
+    </div>
+</div>

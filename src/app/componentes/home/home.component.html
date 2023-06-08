@@ -1,0 +1,41 @@
+<header>
+  <div class="overlay"></div>
+  <img src="../../../assets/fondoMenuHome.png" alt="">
+  
+  <!-- <div class="container">
+      <div class = "content">
+          <h2 class="titulo">Bienvenido!</h2>
+          <h3 class="titulo">Gabriel Alegre 4A</h3>
+          <h5 class="titulo">Trabajo Practico N°1</h5>
+          <span></span>
+          <p id="pHome">¡Espero que disfrute su estadia en la Sala de Juegos!</p>
+            <p style="margin-bottom: 20px;">Ante cualquier consulta: gabrielAlegre68@gmail.com</p>
+            <div id="divbotones">
+                <button *ngIf="!authlogin.sePudo" routerLink="/login" class="btn btn-warning btn-lg action-button" type="button"><i class="ml-2">Iniciar sesión!</i></button>
+                <button *ngIf="!authlogin.sePudo" routerLink="/registro" class="btn btn-warning btn-lg action-button" type="button"><i class="ml-2">Registrate!</i></button>
+            </div>
+      </div>
+  </div> -->
+
+  <div id="contenedorPadre" class="container">
+    <div class="card" [ngClass]="{'cardTamañoSinConBotones':authlogin.sePudo}">
+        <h3 *ngIf="!authlogin.sePudo" class="fondoParaTextos" style="color: #000000">Bienvenido!</h3>
+        <h3 *ngIf="authlogin.sePudo" class="fondoParaTextos" style="color: #000000">Bienvenido, {{authlogin.nombreDelUserQueSeLogueo}}!</h3>
+        <h2 style="margin-bottom: 15px; color: #000000">Gabriel Alegre 4A</h2>
+        <h4 style="color: #000000">Trabajo Practico N°2</h4>
+        <!-- <img style="width: 260px; height: 260px; margin-top: 15px;" class="card-img-top" alt="Card image cap"
+            src="../../../assets/juegoAhorcado.png" /> -->
+        <span style="margin-top: 25px; margin-bottom: 20px;"></span>
+        <p id="pHome">¡Espero que disfrute su estadia en nuestra clinica online!</p>
+        <p style="margin-bottom: 20px; color: black; font-weight: bolder;">Ante cualquier consulta: gabrielAlegre68@gmail.com</p>
+        <div id="divbotones">
+            <button *ngIf="!authlogin.sePudo" class="btn-comenzar-reiniciar" style="margin-right: 20px;" routerLink="/login">Iniciar sesión!</button>
+            <button *ngIf="!authlogin.sePudo" class="btn-comenzar-reiniciar" routerLink="/registro">Registrate!</button>
+            <!-- <button *ngIf="!authlogin.sePudo" routerLink="/login" class="btn btn-warning btn-lg action-button" type="button"><i class="ml-2">Iniciar sesión!</i></button> -->
+            <!-- <button *ngIf="!authlogin.sePudo" routerLink="/registro" class="btn btn-warning btn-lg action-button" type="button"><i class="ml-2">Registrate!</i></button> -->
+        </div>
+       
+    </div>
+</div>
+
+</header>

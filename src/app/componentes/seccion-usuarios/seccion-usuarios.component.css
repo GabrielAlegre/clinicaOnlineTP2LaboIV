@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+
+/* BASIC */
+.titulo-listado {
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  font-weight: bold;
+  width: max-content;
+  display: block;
+  margin: 0 auto;
+  background-color: rgba(110, 11, 156, 0.87);
+  padding: 5px 15px;
+  margin-bottom: 1rem;
+  border-radius: 20px;
+  box-shadow: 0 0 8px rgb(192, 28, 233);
+}
+
+
+.listado-container {
+  font-family: "Poppins", sans-serif;
+  background-image: url(https://infraestructuramedica.mx/wp-content/uploads/2021/08/sala-de-espera-clinica-clinica-sala-de-espera-min-1.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.contenedor-tabla {
+  width: 70vw;
+  padding-top: 1rem;
+  padding-bottom: 0.1rem;
+  /* background-color: rgba(0, 0, 0, 0.7); */
+  background-color: rgba(33, 0, 51, 0.7);
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0 0 16px rgb(8, 123, 161);
+}
+
+.tr:hover {
+  background: rgb(8, 123, 161);
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+
+
+@media screen and (max-width: 480px){
+  .listado-container {
+    font-size: 12px;
+  }
+}
+
+th {
+  text-align: center;
+}
+
+td {
+  text-align: center;
+}
+
+.preguntas{
+  display: flex;
+  justify-content:space-evenly;
+  /* align-items: center; */
+}
+
+.contenedor-form {
+  width: 80vw;
+  padding-top: 1rem;
+  padding-bottom: 0.1rem;
+  background-color: rgba(33, 0, 51, 0.7);
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0 0 16px rgb(8, 123, 161);
+}
+
+.btn-juegos {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #ffffff;
+  border-radius: 30px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  display: block;
+  width: 250px;
+  height: 40px;
+}
+
+.btn-habilitado{
+  background-color: #0d6b08;
+}
+
+.btn-noHabilitado{
+  background-color: #9c1414;
+  color:white;
+}
+
+
+.btn-juegos:hover {
+  /* background-color: rgba(131, 3, 87, 0.87); */
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.btn-juegos:active {
+  transform: translateY(-1px);
+}
+
+.fondoParaTextos{
+  width: max-content;
+  display: block;
+  margin: 0 auto;
+  background-color: rgba(51, 193, 236, 0.87);
+  box-shadow: 0px 5px 5px rgb(15, 3, 185);
+  padding: 5px 15px;
+  /* margin-top: 0.1rem; */
+  border-radius: 20px;
+}
+
+.intentos {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 2px black;
+  background-color: rgba(44, 8, 61, 0.87);
+  font-weight: bold;
+  width: max-content;
+  border-radius: 20px;
+  padding: 10px 68px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+
+.intentosTextos {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 2px black;
+  /* background-color: rgba(44, 8, 61, 0.87); */
+  font-weight: bold;
+  width: max-content;
+  border-radius: 20px;
+  padding: 10px 68px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+.botonesRegistros{
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+}
+
+.btn-volver {
+  font-family: 'Raleway', sans-serif;
+  width: 15rem;
+  position: absolute;
+  left: 1.8%;
+  height: 3rem;
+  border: groove 3px;
+  background-color: #379fac;
+  top: 5%;
+  color: #fff;
+  margin-top: 60px;
+  border-radius: 20px;
+}
+
+.btn-volver:hover {
+  background-color: #83bf9b;
+  color: black;
+  font-weight: 400;
+}

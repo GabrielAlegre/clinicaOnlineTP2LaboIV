@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a href="#"  routerLink="home"><img src="../../../assets/historia-clinica.png" alt="Logo de la empresa"></a>
+      
+      <a class="navbar-brand" href="#" routerLink="home">Clinica Online</a>
+  
+      <div class="collapse navbar-collapse p-2 navLinks" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"  routerLink="home">Bienvenido</a>
+          </li>
+          <li *ngIf="authlogin.sePudo && authlogin.perfilDelUsuario=='administrador'" class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" routerLink="seccionUsuarios">Seccion de usuario</a>
+          </li>
+          <li *ngIf="!authlogin.sePudo" class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" routerLink="login">Iniciar sesión</a>
+          </li>
+          <li *ngIf="!authlogin.sePudo" class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" routerLink="registro">Registro</a>
+          </li>
+        </ul>
+        <form *ngIf="authlogin.sePudo" class="d-flex" role="search">
+          <p class="intentos" style="color: rgb(255, 255, 255); font-size: 20px; margin-right: 20px; padding-top: 13px; margin-bottom: 0px; margin-top: 0px;"><img style="width: 30px; height: 30px; margin: 0px ; margin-bottom: 3px; margin-right: 8px;" src={{authlogin.fotoDelUser}} alt=""><strong>{{authlogin.nombreDelUserQueSeLogueo}}</strong></p>
+          <button style="height: 50px; width: 150px; margin-top: 4px;" (click)="cerrarSesion()" class="btn btn-outline-success" type="submit">Cerrar sesión</button>
+        </form>
+      </div>
+    </div>
+
+</nav>

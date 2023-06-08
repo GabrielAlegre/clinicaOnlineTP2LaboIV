@@ -1,0 +1,65 @@
+<!-- <div class="user-buttons">
+    <h2 style="text-align: center">Pacientes:</h2>
+    <div *ngFor="let paciente of arrayDePacientes" class="user-button">
+      <button class="user-button-nuevo" (click)="clickListado(paciente)">
+        <img src="{{ paciente.fotos[0] }}" alt="Imagen de paciente" class="user-image">
+      </button>
+      <label class="user-name">{{ paciente.nombre }}</label>
+      <label class="user-name">Paciente</label>
+    </div>
+
+    <h2 style="text-align: center">Especialista:</h2>
+    <div *ngFor="let especialista of arrayDeEspecialista" class="user-button">
+        <button class="user-button-nuevo" (click)="clickListado(especialista)">
+          <img src="{{ especialista.fotos }}" alt="Imagen de especialista" class="user-image">
+        </button>
+        <label class="user-name">{{ especialista.nombre }}</label>
+        <label class="user-name">Especialista</label>
+      </div>
+  </div>
+   -->
+<!-- <app-loading *ngIf="mostrarSpinner"></app-loading> -->
+
+<div class="main">
+    <div class="text-white px-3 mx-md-4 mb-0">
+        <h4 class="mb-1 fs-2 mt-2">Clinica Online</h4>
+        <p class="fs-12 mb-3 mt-3">¡Bienvenido a la Clinica Online! ¡Estamos encantados de tenerte aquí! Por favor, Inicia sesión para acceder a atención médica de calidad desde tu hogar. Programa citas, accede a tu historial médico y muchos beneficios mas</p>
+        <!-- <img style="width: 380px;" alt="logo" src="../../../assets/clinicaOnline.gif" alt=""> -->
+      </div>
+    <h2 style="margin-bottom: 10px;" class="fondoParaTextos">Accesos rapidos</h2>
+    <div class="d-flex flex-wrap">
+        <div class="flex-column" style="flex: 2;">
+            <label style="font-size: 15px; margin-top: 20px;" class="tituloEspecialidad">PACIENTES</label>
+            <div class="d-flex flex-wrap">
+                <div *ngFor="let usuario of arrayDePacientes" class="user-button">
+                    <button class="user-button-nuevo" (click)="clickListado(usuario)">
+                        <img src="{{ usuario.fotos }}" alt="Imagen de usuario" class="user-image">
+                    </button>
+                    <label class="user-name">{{ usuario.nombre }}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex-column" style="flex: 2;">
+        <label  style="font-size: 15px; margin-top: 30px;" class="tituloEspecialidad">ESPECIALISTAS</label>
+        <div class="d-flex flex-wrap">
+            <div *ngFor="let usuario of arrayDeEspecialista" class="user-button">
+                <button class="user-button-nuevo" (click)="clickListado(usuario)">
+                    <img src="{{ usuario.fotos }}" alt="Imagen de usuario" class="user-image">
+                </button>
+                <label class="user-name">{{ usuario.nombre }}</label>
+            </div>
+        </div>
+    </div>
+    <div class="flex-column" style="flex: 2;">
+        <label  style="font-size: 15px; margin-top: 30px;" class="tituloEspecialidad">ADMINISTRADORES</label>
+        <div class="d-flex flex-wrap">
+            <div *ngFor="let usuario of arrayDeAdmins" class="user-button">
+                <button class="user-button-nuevo" (click)="clickListado(usuario)">
+                    <img src="{{ usuario.fotos }}" alt="Imagen de usuario" class="user-image">
+                </button>
+                <label class="user-name">{{ usuario.nombre }}</label>
+            </div>
+        </div>
+    </div>
+</div>

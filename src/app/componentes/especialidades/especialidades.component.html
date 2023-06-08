@@ -1,0 +1,30 @@
+<div class="main">
+    <div>
+        <h3
+            class="titulo fondoParaTextos">
+            Seleccione una especialidad:</h3>
+        <input type="text" [(ngModel)]="valorInput" (input)="filtrarLista()" placeholder="Buscar o añadir especialidad"
+            style="width: 75%; border-radius: 30px; padding: 5px; margin-bottom: 5px;" pattern="[a-zA-Z ]+" title="Solo se permiten letras" (blur)="validarEspecialidad()"
+            [ngClass]="{'is-invalid': !inputValidado, 'is-valid': inputValidado}" id="inputSearch">
+        <button style="background-color: aqua;" (click)="agregarItem()" style="width: 23%;">Agregar</button>
+        <!-- <button (click)="agregarItem()" style="width: 10%;"><i class="fa fa-plus" aria-hidden="true"></i></button> -->
+        <!-- <button (click)="ayuda()" style="width: 10%;"><i class="fa fa-question" aria-hidden="true"></i></button> -->
+        <ul>
+            <div *ngIf="listaFiltrada.length==0"
+                style="display: flex; flex-direction: column; align-items: flex-start;height: 20px;font-family: 'Poppins', sans-serif;">
+                <button *ngFor="let item of especialidades" class="btn" style="color: black; text-align: center; border-top: none;
+                border-right: none;
+                border-left: none;
+                border-bottom: 2px solid rgb(0, 0, 0); height: 70px;width: 100%"
+                    (click)="clickListado(item)">{{item}} </button>
+            </div>
+            <div *ngIf="listaFiltrada.length>0"
+                style="display: flex; flex-direction: column; align-items: flex-start;height: 20px;font-family: 'Poppins', sans-serif;">
+                <button *ngFor="let especialidad of listaFiltrada" class="btn" style="color: black; text-align: center;  border-right: none;
+                border-left: none;
+                border-bottom: 1px solid rgb(0, 0, 0); height: 70px;width: 100%"
+                    (click)="clickListado(especialidad)">{{ especialidad }}</button>
+            </div>
+        </ul>
+    </div>
+</div>
