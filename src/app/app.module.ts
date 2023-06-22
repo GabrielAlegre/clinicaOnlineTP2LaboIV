@@ -24,6 +24,10 @@ import { ListadoUsuariosComponent } from './componentes/listado-usuarios/listado
 import { SeccionUsuariosComponent } from './componentes/seccion-usuarios/seccion-usuarios.component';
 import { RegistroAdministradorComponent } from './componentes/registro-administrador/registro-administrador.component';
 import { LoadingComponent } from './componentes/loading/loading.component';
+import { MisTurnosComponent } from './pages/mis-turnos/mis-turnos.component';
+import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
+import { TurnosComponent } from './pages/turnos/turnos.component';
+import { SolicitarTurnoComponent } from './pages/solicitar-turno/solicitar-turno.component';
 
 
 @NgModule({
@@ -39,6 +43,10 @@ import { LoadingComponent } from './componentes/loading/loading.component';
     ListadoUsuariosComponent,
     RegistroAdministradorComponent,
     LoadingComponent,
+    MisTurnosComponent,
+    MiPerfilComponent,
+    TurnosComponent,
+    SolicitarTurnoComponent,
   ],
   imports: [
     FormsModule,

@@ -1,0 +1,229 @@
+<div>
+  <div class="contenedor-spinner" *ngIf="spinner">
+    <div class="wrapper">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="shadow"></div>
+      <div class="shadow"></div>
+      <div class="shadow"></div>
+    </div>
+  </div>
+
+  <div class="perfil" *ngIf="!isEspecialista" style="width: 40vw;">
+    <h3 class="text-center">Mi Perfil</h3>
+    <label class="text-center mb-3 fondoParaSubtitulos" style="font-size: 20px; width: 40rem;">Datos personales</label>
+    <div style="display: flex; justify-content: center">
+      <img *ngIf="isPaciente" class="img-perfil" src="{{ user?.fotos?.length > 0 ? user.fotos[0] : '' }}"
+        alt="imagen 1" />
+      <img *ngIf="!isPaciente" class="img-perfil" src="{{ user?.fotos?.length > 0 ? user.fotos : '' }}"
+        alt="imagen 1" />
+
+      <img class="img-perfil" style="margin-left: 40px;" src="{{ user.fotos[1] }}" alt="imagen 2"
+        *ngIf="isPaciente" />
+    </div>
+    <!-- PERFIL USUARIO  -->
+    <div class="row" *ngIf="isPaciente">
+      <div class="col text-center">
+        <label>Nombre:</label>
+        <p>{{ user.nombre }}</p>
+        <label>Apellido:</label>
+        <p>{{ user.apellido }}</p>
+        <label>Edad:</label>
+        <p>{{ user.edad }} años</p>
+        <label>DNI:</label>
+        <p>{{ user.dni }}</p>
+        <label>Email:</label>
+        <p>{{ user.mail }}</p>
+        <label>Obra Social:</label>
+        <p>{{ user.obraSocial }}</p>
+        <label>Tipo de Usuario:</label>
+        <p>Paciente</p>
+        <label>Historial Clínico:</label>
+        <br />
+        <button *ngIf="hayHistorial" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info"
+          (click)="verHistorialClinico()">
+          Ver Historial Clínico
+        </button>
+        <p *ngIf="!hayHistorial">No hay historial cliníco disponible</p>
+      </div>
+      <!-- <div class="col">
+      </div> -->
+    </div>
+
+    <!-- PERFIL ADMINISTRADOR  -->
+    <div class="row" *ngIf="authService.perfilDelUsuario=='administrador'">
+      <div class="col text-center">
+        <label>Nombre:</label>
+        <p>{{ user?.nombre }}</p>
+        <label>Apellido:</label>
+        <p>{{ user?.apellido }}</p>
+        <label>Edad:</label>
+        <p>{{ user?.edad }} años</p>
+        <label>DNI:</label>
+        <p>{{ user?.dni }}</p>
+        <label>Email:</label>
+        <p>{{ user?.mail }}</p>
+        <label>Tipo de Usuario:</label>
+        <p>Administrador</p>
+      </div>
+      <!-- <div class="col">
+      </div> -->
+    </div>
+  </div>
+
+  <!-- PERFIL ESPECIALISTA -->
+  <div class="perfil-esp" *ngIf="isEspecialista">
+    <h3 class="text-center">Mi Perfil</h3>
+    <label class="text-center mb-3 fondoParaSubtitulos" style="font-size: 20px;">Datos personales</label>
+    <div style="display: flex; justify-content: center">
+      <img class="img-perfil" src="{{ user.fotos }}" alt="imagen 1" />
+      <img class="img-perfil" style="width: 3rem; height: 3rem" src="{{ user.fotos }}" alt="imagen 2"
+        *ngIf="isPaciente" />
+    </div>
+
+    <!-- PERFIL ESPECIALISTA -->
+    <div class="row" *ngIf="isEspecialista">
+      <div class="col col-6">
+        <label>Nombre</label>
+        <p>{{ user.nombre }}</p>
+        <label>Apellido</label>
+        <p>{{ user.apellido }}</p>
+        <label>Edad</label>
+        <p>{{ user.edad }} años</p>
+      </div>
+      <div class="col col-6">
+        <label>Email</label>
+        <p>{{ user.mail }}</p>
+        <label>Especialidad/es</label>
+        <p *ngFor="let esp of user.especialidad" style="margin-bottom: 0px;">
+          <span>- {{ esp.nombre }}</span>
+        </p>
+        <label>DNI</label>
+        <p>{{ user.dni }}</p>
+
+        
+      </div>
+      <label class="text-center mb-2 fondoParaSubtitulos" style="font-size: 20px;">Seccion especialidades</label>
+      <div class="row" style="display: flex; justify-content: space-evenly; align-items: center;">
+        <button class="btn btn-dark" [ngClass]="especialidad1 ? 'btn-info' : ''"
+          style="text-transform: uppercase; width: 20rem; margin-top: 0.5rem" (click)="showTurnsOne()">
+          {{ user.especialidad[0].nombre }}
+        </button>
+        <button *ngIf="user.especialidad[1]" class="btn btn-dark" [ngClass]="especialidad2 ? 'btn-info' : ''"
+          style="text-transform: uppercase; width: 20rem; margin-top: 0.5rem" (click)="showTurnsTwo()">
+          {{ user.especialidad[1].nombre}}
+        </button>
+      </div>
+      <div class="row col-horarios">
+        <label class="text-center mb-2" style="font-size: 20px; margin-top: 20px;">Mis Horarios</label>
+        <div class="dias-contenedor">
+          <button class="btn btn-dark" [ngClass]="lunes ? 'btn-warning' : ''" (click)="addDay('lunes')">
+            Lunes
+          </button>
+          <button class="btn btn-dark" [ngClass]="martes ? 'btn-warning' : ''" (click)="addDay('martes')">
+            Martes
+          </button>
+          <button class="btn btn-dark" [ngClass]="miercoles ? 'btn-warning' : ''" (click)="addDay('miércoles')">
+            Miércoles
+          </button>
+          <button class="btn btn-dark" [ngClass]="jueves ? 'btn-warning' : ''" (click)="addDay('jueves')">
+            Jueves
+          </button>
+          <button class="btn btn-dark" [ngClass]="viernes ? 'btn-warning' : ''" (click)="addDay('viernes')">
+            Viernes
+          </button>
+          <button class="btn btn-dark" [ngClass]="sabado ? 'btn-warning' : ''" (click)="addDay('sábado')">
+            Sábado
+          </button>
+        </div>
+        <label style="margin-top: 1rem; margin-bottom: 1rem">Duración</label>
+        <input [(ngModel)]="turnDuration" class="form-control" type="number" placeholder="30 Minutos" />
+        <button style="margin-top: 1rem" class="btn btn-success" (click)="updateUser()">
+          Guardar Cambios
+        </button>
+      </div>
+    </div>
+    <div class="row" *ngIf="isEspecialista">
+      <div class="col col-horarios-2">
+        <label>Mis Horarios</label>
+        <div class="dias-contenedor">
+          <button class="btn btn-secondary" [ngClass]="lunes ? 'btn-warning' : ''" (click)="addDay('lunes')">
+            Lunes
+          </button>
+          <button class="btn btn-secondary" [ngClass]="martes ? 'btn-warning' : ''" (click)="addDay('martes')">
+            Martes
+          </button>
+          <button class="btn btn-secondary" [ngClass]="miercoles ? 'btn-warning' : ''" (click)="addDay('miércoles')">
+            Miércoles
+          </button>
+          <button class="btn btn-secondary" [ngClass]="jueves ? 'btn-warning' : ''" (click)="addDay('jueves')">
+            Jueves
+          </button>
+          <button class="btn btn-secondary" [ngClass]="viernes ? 'btn-warning' : ''" (click)="addDay('viernes')">
+            Viernes
+          </button>
+          <button class="btn btn-secondary" [ngClass]="sabado ? 'btn-warning' : ''" (click)="addDay('sábado')">
+            Sábado
+          </button>
+        </div>
+        <label style="margin-top: 1rem; margin-bottom: 1rem">Duración de Turno (min)</label>
+        <input [(ngModel)]="turnDuration" class="form-control" type="number" placeholder="30 Minutos" />
+        <button style="margin-top: 1rem" class="btn btn-success" (click)="updateUser()">
+          Aceptar
+        </button>
+      </div>
+    </div>
+
+  </div>
+  <div class="perfil-container"></div>
+</div>
+
+<div class="modal fade historia" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog d-flex justify-content-center">
+    <div class="modal-content" style="background: rgba(33, 0, 51, 0.7); width: 50rem;">
+      <div class="modal-header" style="background: rgba(33, 0, 51, 0.7); width: 50rem;">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: white;"></button>
+      </div>
+      <div class="modal-body">
+          <h1 style="text-align: center; font-size: 2rem">
+            Historial clinico del paciente: 
+            <span style="text-transform: uppercase; font-weight: bolder">{{ user?.apellido }}, {{ user?.nombre }}</span>
+          </h1>
+          <div *ngFor="let historial of historialClinicoFiltrado" class="carta-historial">
+            <h3 class="text-center">
+              <span style="text-transform: uppercase">{{
+                historial?.especialidad
+                }}</span>
+              - {{ (historial?.fecha.seconds * 1000) | date: 'dd/MM/yyyy HH:mm:ss' }}
+            </h3>
+            <hr />
+            <p>
+              <span>Especialista: </span>{{ historial?.especialista?.apellido }},
+              {{ historial?.especialista?.nombre }}
+            </p>
+            <p><span>Detalle: </span></p>
+            <p>Altura: {{ historial?.detalle?.altura }}</p>
+            <p>Peso: {{ historial?.detalle?.peso }}</p>
+            <p>Temperatura: {{ historial?.detalle?.temperatura }}</p>
+            <p>Presión: {{ historial?.detalle?.presion }}</p>
+            <p *ngIf="historial?.detalleAdicional?.clave3 || historial?.detalleAdicional?.clave2 || historial?.detalleAdicional?.clave1"><span>Detalles adicionales: </span></p>
+            <p *ngIf="!historial?.detalleAdicional?.clave3 && !historial?.detalleAdicional?.clave2 && !historial?.detalleAdicional?.clave1"><span>No se agregaron detalles extras.</span></p>
+            <p *ngIf="historial?.detalleAdicional?.clave1">
+              {{ historial?.detalleAdicional?.clave1 }}:
+              {{ historial?.detalleAdicional?.valor1 }}
+            </p>
+            <p *ngIf="historial?.detalleAdicional?.clave2">
+              {{ historial?.detalleAdicional?.clave2 }}:
+              {{ historial?.detalleAdicional?.valor2 }}
+            </p>
+            <p *ngIf="historial?.detalleAdicional?.clave3">
+              {{ historial?.detalleAdicional?.clave3 }}:
+              {{ historial?.detalleAdicional?.valor3 }}
+            </p>
+            <hr />
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

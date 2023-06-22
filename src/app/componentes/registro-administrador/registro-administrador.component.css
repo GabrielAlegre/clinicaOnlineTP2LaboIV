@@ -209,3 +209,15 @@ transform: scale(.9);
 .btn-reiniciar:active {
   transform: translateY(-1px);
 }
+
+.captcha {
+  font-size: 1.2rem;
+  text-align: center;
+  color: black;
+  background: #fff;
+  padding: 0.3rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: bolder;
+  /* text-shadow: 1px 1px 1px #fff; */
+}

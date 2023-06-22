@@ -27,12 +27,16 @@ export class RegistroAdministradorComponent {
   correoValido: boolean = false;
   passValidoConf: boolean = false;
   mostrarSpinner:boolean=false;
+  captchaValido:boolean=false;
+  captchaEscrito:string="";
+  captcha: string = '';
+  
 
   constructor(private formBuilder: FormBuilder,
     public firestoreService: FirestoreService,
     private serviceAlert: SweetalertService,
     private storage: Storage) {
-
+  this.captcha = this.generateRandomString(6);
     this.images = [];
   }
 
@@ -66,11 +70,32 @@ export class RegistroAdministradorComponent {
     });
   }
 
+  generateRandomString(num: number) {
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result1 = '';
+    const charactersLength = characters.length;
+    for (let i = 0; i < num; i++) {
+      result1 += characters.charAt(
+        Math.floor(Math.random() * charactersLength)
+      );
+    }
+    return result1;
+  }
+  
+  
+  validarCaptcha() {
+    if (this.captchaEscrito == this.captcha) {
+      this.captchaValido = true;
+    } else {
+      this.captchaValido = false;
+    }
+  }
 
 
   async guardar() {
     let borrar=false;
-    if (this.apellidoValido && this.nameValido && this.edadValidada && this.dniValido && this.passValido && this.correoValido && this.passValidoConf) {
+    if (this.apellidoValido && this.nameValido && this.edadValidada && this.dniValido && this.passValido && this.correoValido && this.passValidoConf && this.captchaValido) {
 
       this.administrador.nombre = this.form.value.nom;
       this.administrador.apellido = this.form.value.ap;
@@ -129,6 +154,14 @@ export class RegistroAdministradorComponent {
     this.imageCount = 0;
     this.images = [];
     this.image = "";
+    this.apellidoValido = false;
+    this.nameValido = false;
+    this.edadValidada = false;
+    this.dniValido = false;
+    this.obraSocialValida = false;
+    this.passValido = false;
+    this.correoValido = false;
+    this.passValidoConf = false;
   }
 
 

@@ -1,0 +1,127 @@
+<body>
+    <div class="solicitar-turno">
+        <div *ngIf="patientSelectionMenu">
+            <h3 class="text-center fondoParaSubtitulos" style="color: dark;">Seleccione un paciente: </h3>
+            <div class="row">
+                <div class="col carta-especialista" *ngFor="let pac of pacientesList" (click)="showPatient(pac)">
+                    <img style="margin-bottom:50px; margin-top:50px;" src="{{ pac.fotos[0]}}" alt="imagen" />
+                    <p>Nombre: {{ pac.nombre }}, {{ pac.apellido }}</p>
+                    <p>Obra social: {{ pac.obraSocial }}</p>
+                    <p>Dni: {{pac.dni}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="specialistSelectionMenu && !patientSelectionMenu">
+            <h3 class="text-center fondoParaSubtitulos" style="color: dark;">Especialistas disponibles: </h3>
+            <div style="display: flex; justify-content: center; margin-top: 5rem;">
+                <div *ngFor="let esp of especialistasList" (click)="showSpeciality(esp)">
+                    <div>
+
+                        <img class="carta-especialista" style="
+                  width: 15rem;
+                  height: 15rem;
+                  display: flex;
+                  justify-content: center;
+                " src="{{ esp.fotos }}" alt="imagen" />
+                        <p style="text-align: center; font-weight: bolder; color: white; margin-top: 10px;">
+                            Nombre: {{ esp.nombre }}, {{ esp.apellido }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="activeEspecialista && !turnsSelectionMenu">
+            <h3 class="text-center fondoParaSubtitulos" style="color: dark;">Elija especialidad</h3>
+            <div class="row">
+                <div class="col especialidades" style="border-radius: 2rem;"
+                    *ngFor="let especialidad of activeEspecialista.especialidad" (click)="showTurns(especialidad)">
+
+                    <h3 class="text-center" style="color: white; margin-top: 40px;">Especialidad: {{ especialidad.nombre }}</h3>
+                    <img style=" width: 20rem;
+                    height: 20rem;
+                    border-radius: 10px;
+                    " *ngIf="
+                especialidad.nombre != 'Diabetología' &&
+                especialidad.nombre != 'Endrocrinología'
+              " src="../../../assets/informe-medico.png" alt="" />
+            </div>
+            </div>
+        </div>
+
+        <div *ngIf="turnsSelectionMenu">
+            <h3 class="text-center fondoParaSubtitulos" style="color: dark;">Seleccion de turno</h3>
+            <div class="row">
+                <div class="col carta-turno">
+                    <img style="width: 18rem; margin-bottom: 20px;" src="{{ activeEspecialista.fotos }}" alt="imagen" />
+                    <p>
+                        Nombre de la especialista: {{ activeEspecialista.nombre }}, {{ activeEspecialista.apellido }}
+                    </p>
+                    <p>Especialidad: {{ speciality.nombre }}</p>
+                </div>
+                <div class="col turnos-desk">
+                    <button class="btn btn-warning" style="
+                text-transform: uppercase;
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+                margin-bottom: 0.5rem;
+              " *ngFor="let dia of diasAMostrar" (click)="loadFreeHoursOneDay(dia)">
+                        {{ dia | date: 'd/M/yy'}}
+                    </button>
+                    <br />
+                    <p *ngIf="diasAMostrar.length == 0" style="text-align: center; color: white;">
+                        No hay turnos disponibles
+                    </p>
+                    <div style="overflow-y: scroll; height: 15rem">
+                        <button class="btn btn-secondary" style="
+                  width: 4rem;
+                  height: 4rem;
+                  border-radius: 1rem;
+                  margin: 0.1rem;
+                " *ngFor="let turno of turnosDeUnDiaAMostrar" (click)="seleccionarTurno(turno)">
+                            {{ turno.fecha | date: 'h:mm' }}
+                        </button>
+                    </div>
+                    <button *ngIf="botonPedirTurno" class="btn btn-primary" style="margin-top: 1rem; width: 100%"
+                        (click)="solicitarTurno()">
+                        Solicitar Turno
+                    </button>
+                </div>
+            </div>
+
+            <div class="row turnos-resp">
+                <div class="col">
+                    <button class="btn btn-success btn-dia" style="
+                text-transform: uppercase;
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+                margin-bottom: 0.5rem;
+              " *ngFor="let dia of diasAMostrar" (click)="loadFreeHoursOneDay(dia)">
+                        {{ dia | date: 'M/d/yy'}}
+                    </button>
+                    <br />
+                    <p *ngIf="diasAMostrar.length == 0" style="text-align: center; color: white;">
+                        No hay turnos disponibles
+                    </p>
+                    <div class="contenedor-btn-hora">
+                        <button class="btn btn-info" style="
+                  width: 4rem;
+                  height: 4rem;
+                  border-radius: 1rem;
+                  margin: 0.1rem;
+                " *ngFor="let turno of turnosDeUnDiaAMostrar" (click)="seleccionarTurno(turno)">
+                            {{ turno.fecha | date: 'h:mm' }}
+                        </button>
+                    </div>
+                    <button *ngIf="botonPedirTurno" class="btn btn-primary" style="margin-top: 1rem; width: 100%"
+                        (click)="solicitarTurno()">
+                        Solicitar Turno
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="solicitar-turno-container"></div>
+</body>

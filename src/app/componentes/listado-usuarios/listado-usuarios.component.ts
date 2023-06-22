@@ -21,15 +21,15 @@ export class ListadoUsuariosComponent {
   
   ngOnInit(): void {
     this.firestore.traer().subscribe(pacientes => {
-      this.arrayDePacientes=pacientes;   
+      this.arrayDePacientes=pacientes.slice(0,3); 
     });
 
     this.firestore.traerEspecialistas().subscribe(especialistas => {
-      this.arrayDeEspecialista=especialistas;   
+      this.arrayDeEspecialista=especialistas.slice(0,2);   
     });
 
     this.firestore.traerAdministradores().subscribe(administradores => {
-      this.arrayDeAdmins=administradores;   
+      this.arrayDeAdmins=administradores.slice(0,1);   
     });
     // this.mostrarSpinner = true;
     // setTimeout(() => {

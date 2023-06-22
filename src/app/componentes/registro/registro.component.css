@@ -1,3 +1,16 @@
+.captcha {
+  font-size: 1.2rem;
+  text-align: center;
+  color: black;
+  background: #fff;
+  padding: 0.3rem;
+  border-radius: 10px;
+  /* text-transform: uppercase; */
+  font-weight: bolder;
+  /* text-shadow: 1px 1px 1px #fff; */
+}
+
+
 .fondoParaTextos{
     width: max-content;
     display: block;
@@ -208,3 +221,50 @@ button:hover {
   .btn-reiniciar:active {
     transform: translateY(-1px);
   }
+
+  .opcion-registros {
+    z-index: 100;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .card-forms {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr); /* Dos columnas con igual ancho */
+    gap: 1rem; /* Espacio entre los elementos */
+    justify-content: center; /* Centrar horizontalmente */
+    
+  }
+  
+  .card-form 
+    div {
+      display: inline-block;
+      flex-direction: column;
+      width: 70vw;
+      margin-bottom: 1rem;
+      background: rgba(199, 151, 132, 0.685);
+      border-radius: .7rem;
+      border: 2px solid #000000;
+      box-shadow: 2px 2px 4px #000;
+    }
+    .card-form h2 {
+        font-weight: bold;
+        text-align: center;
+        /* text-shadow: 1px 1px #000; */
+      }
+      .card-form img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 19rem;
+      }
+    
+    .card-form div:hover {
+      color: #fff;
+      background: rgba(90, 63, 35, 0.685);
+      cursor: pointer;
+      transition: background 0.5s, color 0.5s;
+    }
+  

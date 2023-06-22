@@ -21,8 +21,12 @@ export class FirestoreService {
     this.angularFireAuth.createUserWithEmailAndPassword(paciente.mail,  paciente.password).then((data) =>{
       data.user?.sendEmailVerification();
 
-      const documento = this.angularFirestore.doc('pacientes/' + this.angularFirestore.createId());
-      const uid = documento.ref.id;
+      // const documento = this.angularFirestore.doc('pacientes/' + this.angularFirestore.createId());
+      // const uid = documento.ref.id;
+
+      const uid = data.user?.uid;
+
+      const documento = this.angularFirestore.doc('pacientes/' + uid);
 
       documento.set({
         uid: uid,
@@ -123,8 +127,8 @@ export class FirestoreService {
     this.angularFireAuth.createUserWithEmailAndPassword(especialista.mail,  especialista.password).then((data) =>{
       data.user?.sendEmailVerification();
 
-      const documento = this.angularFirestore.doc('especialistas/' + this.angularFirestore.createId());
-      const uid = documento.ref.id;
+      const uid = data.user?.uid;
+      const documento = this.angularFirestore.doc('especialistas/' + uid);
 
       documento.set({
         uid: uid,
@@ -153,8 +157,10 @@ export class FirestoreService {
   guardarAdmin(administrador: Administrador) {
     this.angularFireAuth.createUserWithEmailAndPassword(administrador.mail,  administrador.password).then((data) =>{
       data.user?.sendEmailVerification();
-      const documento = this.angularFirestore.doc('administradores/' + this.angularFirestore.createId());
-      const uid = documento.ref.id;
+      
+      const uid = data.user?.uid;
+      const documento = this.angularFirestore.doc('administradores/' + uid);
+
 
       documento.set({
         uid: uid,
@@ -203,41 +209,107 @@ export class FirestoreService {
     });
   }
 
+  traerUsuario(uid: string) {
+    return this.traerUsuariosCombinados().pipe(
+      map((usuarios: any[]) => {
+        return usuarios.find(user => user.uid === uid);
+      })
+    );
+  }
+  
   updateEspecialista(userMod: any) {
     this.angularFirestore
       .doc<any>(`especialistas/${userMod.uid}`)
       .update(userMod)
       .then(() => { })
       .catch((error) => {
-        // this.sweetalert.showSuccessAlert("Ocurrio un error", "Administrador", "error");
       });
+  }
+
+
+  private createMessage(errorCode: string): string {
+    let message: string = '';
+    switch (errorCode) {
+      case 'auth/internal-error':
+        message = 'Los campos estan vacios';
+        break;
+      case 'auth/operation-not-allowed':
+        message = 'La operación no está permitida.';
+        break;
+      case 'auth/email-already-in-use':
+        message = 'El email ya está registrado.';
+        break;
+      case 'auth/invalid-email':
+        message = 'El email no es valido.';
+        break;
+      case 'auth/weak-password':
+        message = 'La contraseña debe tener al menos 6 caracteres';
+        break;
+      default:
+        message = 'Error al crear el usuario.';
+        break;
     }
 
+    return message;
+  }
 
+  //TURNOS
+  createTurnList(turn: any) {
+    this.angularFirestore
+      .collection<any>('turnos')
+      .add(turn)
+      .then((data) => {
+        this.angularFirestore.collection('turnos').doc(data.id).set({
+          id: data.id,
+          especialista: turn.especialista,
+          turnos: turn.turnos,
+        });
+      });
+  }
 
-    private createMessage(errorCode: string): string {
-      let message: string = '';
-      switch (errorCode) {
-        case 'auth/internal-error':
-          message = 'Los campos estan vacios';
-          break;
-        case 'auth/operation-not-allowed':
-          message = 'La operación no está permitida.';
-          break;
-        case 'auth/email-already-in-use':
-          message = 'El email ya está registrado.';
-          break;
-        case 'auth/invalid-email':
-          message = 'El email no es valido.';
-          break;
-        case 'auth/weak-password':
-          message = 'La contraseña debe tener al menos 6 caracteres';
-          break;
-        default:
-          message = 'Error al crear el usuario.';
-          break;
-      }
-  
-      return message;
-    }
+  getTurnList() {
+    const collection = this.angularFirestore.collection<any>('turnos');
+    return collection.valueChanges();
+  }
+
+  updateTurnList(turn: any) {
+    this.angularFirestore
+      .doc<any>(`turnos/${turn.id}`)
+      .update(turn)
+      .then(() => { })
+      .catch((error) => {
+        console.log(error.message);
+        this.serviceAlert.showSuccessAlert('Ocurrio un error', 'Administrador', 'error');
+      });
+  }
+
+  createHistorialClinico(turn: any) {
+    return this.angularFirestore
+      .collection<any>('historialesClinicos')
+      .add(turn)
+      .then((data) => {
+        this.angularFirestore
+          .collection('historialesClinicos')
+          .doc(data.id)
+          .set({
+            id: data.id,
+            especialidad: turn.especialidad,
+            especialista: turn.especialista,
+            paciente: turn.paciente,
+            fecha: turn.fecha,
+            detalle: turn.detalle,
+            detalleAdicional: turn.detalleAdicional,
+          });
+      })
+      .catch((error) => {
+        throw error;
+      });
+  }
+
+  getHistorialesClinicos() {
+    const collection = this.angularFirestore.collection<any>(
+      'historialesClinicos'
+    );
+    return collection.valueChanges();
+  }
 }

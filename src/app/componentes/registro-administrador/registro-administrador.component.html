@@ -8,9 +8,9 @@
                 <label
                     style="font-size: 25px; margin-top: 25px; margin-left: 25px; margin-right: 25px; margin-bottom: 0px;">Registrar administrador</label>
                 
-                    <div style="display:flex; justify-content:center; align-items:center; margin-top: 10px;">
+                    <!-- <div style="display:flex; justify-content:center; align-items:center; margin-top: 10px;">
                         <img width="110px" src="../../../assets/gerente.png" alt="">
-                    </div>
+                    </div> -->
                 
                 <div class="d-flex flex-wrap">
                     <div class="flex-column" style="flex: 2;">
@@ -131,6 +131,21 @@
                     *ngIf="form.controls['ft'].errors?.['required'] && form.controls['ft'].touched">
                     Ingrese una imagen
                 </small>
+
+                <div >
+                    <input [ngModelOptions]="{standalone: true}" type="text" class="form-control" [(ngModel)]="captchaEscrito"
+                        (input)="validarCaptcha()" [ngClass]="{'is-invalid': !captchaValido, 'is-valid': captchaValido}"
+                        placeholder="CAPTCHA" />
+                    <div class="invalid-feedback" style="margin-left: 5px; font-size: 15px; color: red;"
+                        *ngIf="captchaEscrito.length > 0">
+                        Captcha Invalido.
+                    </div>
+                </div>
+                <div >
+                    <p class="captcha">
+                        {{ captcha }}
+                    </p>
+                </div>
 
                 <button style="margin-top: 40px; width: 80%;" class="btn-reiniciar" type="submit">Registrar</button>
             </form>

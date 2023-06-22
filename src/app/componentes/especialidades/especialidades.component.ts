@@ -70,15 +70,33 @@ export class EspecialidadesComponent {
   // this.listaFiltrada = [...this.especialidades];
   // }
 
+  // clickListado(especialidad: any) {
+  //   if (!this.listaEspecialidades.includes(especialidad) && this.listaEspecialidades.length < 5) {
+  //     this.listaEspecialidades.push(especialidad);
+  //     this.botonClickeado.emit(this.listaEspecialidades);
+  //   }
+  //   else if (this.listaEspecialidades.includes(especialidad) && this.listaEspecialidades.length < 6) {
+  //     let indice = this.listaEspecialidades.indexOf(especialidad);
+  //     this.listaEspecialidades.splice(indice, 1);
+  //     this.botonClickeado.emit(this.listaEspecialidades);
+  //   }
+  // }
+  
   clickListado(especialidad: any) {
-    if (!this.listaEspecialidades.includes(especialidad) && this.listaEspecialidades.length < 5) {
-      this.listaEspecialidades.push(especialidad);
-      this.botonClickeado.emit(this.listaEspecialidades);
-    }
-    else if (this.listaEspecialidades.includes(especialidad) && this.listaEspecialidades.length < 6) {
-      let indice = this.listaEspecialidades.indexOf(especialidad);
+
+    const especialidadConNombre = { nombre: especialidad };
+
+    if (!this.listaEspecialidades.some((e:any) => e.nombre === especialidad)) {
+      if (this.listaEspecialidades.length < 2) {
+        this.listaEspecialidades.push(especialidadConNombre);
+        this.botonClickeado.emit(this.listaEspecialidades);
+      }
+    } else {
+      const indice = this.listaEspecialidades.findIndex((e:any) => e.nombre === especialidad);
       this.listaEspecialidades.splice(indice, 1);
       this.botonClickeado.emit(this.listaEspecialidades);
     }
+  
   }
+  
 }

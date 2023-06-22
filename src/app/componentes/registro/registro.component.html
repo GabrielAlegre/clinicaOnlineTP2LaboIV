@@ -1,7 +1,27 @@
 <app-loading *ngIf="mostrarSpinner"></app-loading>
 <body
     [ngClass]="{'fondoBodyEspecialista': mostrarListadoEspecialidades, 'fondoBodyPaciente': !mostrarListadoEspecialidades}">
-    <div style="margin-top: 90px;" class="main">
+
+
+    <div class="opcion-registros" [hidden]="!esconderBotonesInicio">
+        <div class="card-forms text-focus-in">
+            <div class="row card-form text-focus-in grow" (click)="mostrarFormPaciente()">
+            <div>
+                <img src="../../../assets/paciente.png" alt="imagen paciente" />
+                <h2 style="margin-bottom: 0px;">Paciente</h2>
+            </div>
+            </div>
+            <div class="row card-form text-focus-in grow" (click)="mostrarFormEspecialista()">
+            <div>
+                <img src="../../../assets/medico.png" alt="imagen medico" style="margin-top: 10px;"/>
+                <h2 style="margin-top: 10px;">Especialista</h2>
+            </div>
+            </div>
+        </div>
+        </div>
+
+
+    <div style="margin-top: 90px;" class="main" [hidden]="esconderBotonesInicio">
         <input (change)="handleChangeActivar($event)" name="opcionRegistro" type="radio" id="chkEspecialista"
             aria-hidden="true">
         <input (change)="handleChangeActivar($event)" name="opcionRegistro" type="radio" id="chk" aria-hidden="true"
@@ -129,6 +149,22 @@
                     </div>
                 </div>
 
+                <!-- captchat -->
+                <div >
+                    <input [ngModelOptions]="{standalone: true}" type="text" class="form-control" [(ngModel)]="captchaEscrito"
+                        (input)="validarCaptcha()" [ngClass]="{'is-invalid': !captchaValido, 'is-valid': captchaValido}"
+                        placeholder="CAPTCHA" />
+                    <div class="invalid-feedback" style="margin-left: 5px; font-size: 15px; color: red;"
+                        *ngIf="captchaEscrito.length > 0">
+                        Captcha Invalido.
+                    </div>
+                </div>
+                <div >
+                    <p class="captcha">
+                        {{ captcha }}
+                    </p>
+                </div>
+
 
                 <!-- Input para seleccionar las imágenes -->
                 <label for="file" style="font-size:20px; margin-bottom: -2%;">INGRESE 2 IMAGENES</label>
@@ -140,9 +176,9 @@
                 </small>
 
                 <!-- Div para mostrar las imágenes seleccionadas -->
-                <div class="images" style="align-items: center;display: flex;justify-content: center;">
+                <!-- <div class="images" style="align-items: center;display: flex;justify-content: center;">
                     <img [src]="image" *ngFor="let image of images" style="width: 100px;height: 100px;">
-                </div>
+                </div> -->
 
                 <button class="btn-reiniciar" type="submit">Registrar</button>
             </form>
@@ -271,6 +307,22 @@
                     <!-- <button style="width:30%; background: rgba(10, 104, 104, 0.87);" type="button" class="btn btn-primary">Primary</button> -->
                 </div>
 
+                
+                <!-- captchat -->
+                <div >
+                    <input [ngModelOptions]="{standalone: true}" type="text" class="form-control" [(ngModel)]="captchaEscrito"
+                        (input)="validarCaptcha()" [ngClass]="{'is-invalid': !captchaValido, 'is-valid': captchaValido}"
+                        placeholder="CAPTCHA" />
+                    <div class="invalid-feedback" style="margin-left: 5px; font-size: 15px; color: red;"
+                        *ngIf="captchaEscrito.length > 0">
+                        Captcha Invalido.
+                    </div>
+                </div>
+                <div >
+                    <p class="captcha">
+                        {{ captcha }}
+                    </p>
+                </div>
 
                 <label for="file" style="font-size:20px; margin-bottom: -2%; margin-top: 0%;">INGRESE UNA IMAGEN</label>
                 <input type="file" id="fileInputEsp" name="ft" accept="image/*"
@@ -281,9 +333,9 @@
                 </small>
 
 
-                <div class="image" style="align-items: center;display: flex;justify-content: center;">
+                <!-- <div class="image" style="align-items: center;display: flex;justify-content: center;">
                     <img [src]="image" *ngIf="image!=''" style="width: 100px;height: 100px;">
-                </div>
+                </div> -->
 
                 <!-- <button type="submit">Registrar</button> -->
                 <button class="btn-reiniciar" type="submit">Registrar</button>

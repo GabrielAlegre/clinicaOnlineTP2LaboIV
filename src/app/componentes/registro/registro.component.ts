@@ -32,13 +32,17 @@ export class RegistroComponent {
   mostrarListadoEspecialidades: boolean = false;
   especialidades:string="";
   mostrarSpinner = false;
-
+  esconderBotonesInicio=true;
+  captchaValido:boolean=false;
+  captchaEscrito:string="";
+  captcha: string = '';
 
   constructor(private formBuilder: FormBuilder,
     public firestoreService: FirestoreService,
     private serviceAlert: SweetalertService,
     private storage: Storage) {
-
+      this.captcha = this.generateRandomString(6);
+  
     this.images = [];
   }
 
@@ -48,6 +52,28 @@ export class RegistroComponent {
     Object.keys(this.form.controls).forEach(key => {
       this.form.get(key)?.setErrors(null);
     });
+  }
+
+  generateRandomString(num: number) {
+    const characters =
+      'QWERTYUIOPASDFGHJKLÑZXCVBNMqwertyuiopasdfghjklñzxcvbnm0123456789';
+    let result1 = '';
+    const charactersLength = characters.length;
+    for (let i = 0; i < num; i++) {
+      result1 += characters.charAt(
+        Math.floor(Math.random() * charactersLength)
+      );
+    }
+    return result1;
+  }
+  
+  
+  validarCaptcha() {
+    if (this.captchaEscrito == this.captcha) {
+      this.captchaValido = true;
+    } else {
+      this.captchaValido = false;
+    }
   }
 
 
@@ -69,6 +95,20 @@ export class RegistroComponent {
     this.form.updateValueAndValidity();
   }
 
+  mostrarFormPaciente(){
+    this.esconderBotonesInicio=false;
+    this.opcionRegistro[0].checked=false;
+    this.opcionRegistro[1].checked=true;
+
+  }
+  mostrarFormEspecialista(){
+    this.esconderBotonesInicio=false;
+    this.opcionRegistro[0].checked=true;
+    this.opcionRegistro[1].checked=false;
+    this.mostrarListadoEspecialidades = true;
+    
+  }
+
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       nom: ['', Validators.required],
@@ -83,6 +123,7 @@ export class RegistroComponent {
     });
     if(this.queQuiereRegistrar!=undefined)
     {
+      this.esconderBotonesInicio=false;
       //this.opcionRegistro[0] -> hace referencia a especialista
       //this.opcionRegistro[1] -> hace referencia a pacientes
       if(this.queQuiereRegistrar=="paciente"){
@@ -103,9 +144,17 @@ export class RegistroComponent {
     if (target.checked) {
       console.log("Radio seleccionado:", target.id);
       if (target.id == 'chk') {
+        this.captchaValido=false;
+        this.captchaEscrito="";
+        this.captcha = this.generateRandomString(6);
         this.mostrarListadoEspecialidades = false;
       }
       else {
+        this.captchaValido=false;
+
+
+        this.captchaEscrito="";
+        this.captcha = this.generateRandomString(6);
         this.mostrarListadoEspecialidades = true;
       }
       this.resetForm();
@@ -122,7 +171,7 @@ export class RegistroComponent {
   async guardar(esPaciente: boolean) {
     let borrar=false;
     if (this.apellidoValido && this.nameValido && this.edadValidada && this.dniValido && this.passValido && 
-      this.correoValido && this.passValidoConf) {
+      this.correoValido && this.passValidoConf && this.captchaValido) {
       if (esPaciente && this.obraSocialValida && this.images.length==2) {
         this.paciente.nombre = this.form.value.nom;
         this.paciente.apellido = this.form.value.ap;
@@ -344,8 +393,13 @@ export class RegistroComponent {
   }
 
 
+  // clickListado($event: any) {
+  //   this.especialidades=$event.join(' - ');
+  //   this.especialidad = $event;
+  // }
   clickListado($event: any) {
-    this.especialidades=$event.join(' - ');
+    //@ts-ignore
+    this.especialidades = $event.map((especialidad) => especialidad.nombre).join(' - ');
     this.especialidad = $event;
   }
 

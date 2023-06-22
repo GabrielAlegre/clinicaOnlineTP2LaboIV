@@ -9,14 +9,26 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#"  routerLink="home">Bienvenido</a>
           </li>
-          <li *ngIf="authlogin.sePudo && authlogin.perfilDelUsuario=='administrador'" class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" routerLink="seccionUsuarios">Seccion de usuario</a>
-          </li>
           <li *ngIf="!authlogin.sePudo" class="nav-item">
             <a class="nav-link active" aria-current="page" href="#" routerLink="login">Iniciar sesión</a>
           </li>
           <li *ngIf="!authlogin.sePudo" class="nav-item">
             <a class="nav-link active" aria-current="page" href="#" routerLink="registro">Registro</a>
+          </li>
+          <li *ngIf="authlogin.sePudo" class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" routerLink="miPerfil">Mi perfil</a>
+          </li>
+          <li *ngIf="authlogin.sePudo && authlogin.perfilDelUsuario=='administrador'" class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" routerLink="seccionUsuarios">Seccion de usuario</a>
+          </li>
+          <li *ngIf="authlogin.sePudo && authlogin.perfilDelUsuario=='administrador'" class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" routerLink="turnos">Turnos</a>
+          </li>
+          <li *ngIf="authlogin.sePudo && (authlogin.perfilDelUsuario=='administrador' || authlogin.perfilDelUsuario=='paciente')" class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" routerLink="solicitarTurno">Solicitar turno</a>
+          </li>
+          <li *ngIf="authlogin.sePudo && (authlogin.perfilDelUsuario=='especialista' || authlogin.perfilDelUsuario=='paciente')" class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" routerLink="misTurnos">Mis turnos</a>
           </li>
         </ul>
         <form *ngIf="authlogin.sePudo" class="d-flex" role="search">
