@@ -437,6 +437,7 @@ export class MisTurnosComponent {
     this.confirmacionFinalizacion = true;
     this.vistaComentario = false;
     this.vistaComentarioCalificacion = false;
+    this.notificationService.showSuccessAlert('Excelente, antes de finalizar por favor confirme la finalizacion del turno junto a un comentario', 'Turno', 'info');
   }
 
   confirmarFinalizacion(turno: any) {

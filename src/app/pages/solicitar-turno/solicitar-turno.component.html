@@ -17,16 +17,16 @@
             <div style="display: flex; justify-content: center; margin-top: 5rem;">
                 <div *ngFor="let esp of especialistasList" (click)="showSpeciality(esp)">
                     <div>
-
-                        <img class="carta-especialista" style="
-                  width: 15rem;
-                  height: 15rem;
-                  display: flex;
-                  justify-content: center;
-                " src="{{ esp.fotos }}" alt="imagen" />
                         <p style="text-align: center; font-weight: bolder; color: white; margin-top: 10px;">
                             Nombre: {{ esp.nombre }}, {{ esp.apellido }}
                         </p>
+                        <img class="carta-especialista" style="
+                  width: 16rem;
+                  height: 16rem;
+                  border-radius: 50%;
+                  display: flex;
+                  justify-content: center;
+                " src="{{ esp.fotos }}" alt="imagen" />
                     </div>
                 </div>
             </div>
@@ -38,7 +38,8 @@
                 <div class="col especialidades" style="border-radius: 2rem;"
                     *ngFor="let especialidad of activeEspecialista.especialidad" (click)="showTurns(especialidad)">
 
-                    <h3 class="text-center" style="color: white; margin-top: 40px;">Especialidad: {{ especialidad.nombre }}</h3>
+                    <h3 class="text-center" style="color: white; margin-top: 40px;">Especialidad: {{ especialidad.nombre
+                        }}</h3>
                     <img style=" width: 20rem;
                     height: 20rem;
                     border-radius: 10px;
@@ -46,7 +47,7 @@
                 especialidad.nombre != 'Diabetología' &&
                 especialidad.nombre != 'Endrocrinología'
               " src="../../../assets/informe-medico.png" alt="" />
-            </div>
+                </div>
             </div>
         </div>
 
@@ -67,7 +68,8 @@
                 margin-right: 0.5rem;
                 margin-bottom: 0.5rem;
               " *ngFor="let dia of diasAMostrar" (click)="loadFreeHoursOneDay(dia)">
-                        {{ dia | date: 'd/M/yy'}}
+              <!-- cambiooooooooooooooooooooooooooooooooooo  -->
+                        {{ dia | date: 'yyyy/MM/dd'}}
                     </button>
                     <br />
                     <p *ngIf="diasAMostrar.length == 0" style="text-align: center; color: white;">

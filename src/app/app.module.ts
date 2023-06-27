@@ -28,6 +28,7 @@ import { MisTurnosComponent } from './pages/mis-turnos/mis-turnos.component';
 import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
 import { SolicitarTurnoComponent } from './pages/solicitar-turno/solicitar-turno.component';
+import { SeccionPacientesComponent } from './pages/seccion-pacientes/seccion-pacientes.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { SolicitarTurnoComponent } from './pages/solicitar-turno/solicitar-turno
     MiPerfilComponent,
     TurnosComponent,
     SolicitarTurnoComponent,
+    SeccionPacientesComponent,
   ],
   imports: [
     FormsModule,

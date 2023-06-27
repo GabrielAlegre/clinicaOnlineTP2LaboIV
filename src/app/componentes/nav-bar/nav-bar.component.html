@@ -30,6 +30,9 @@
           <li *ngIf="authlogin.sePudo && (authlogin.perfilDelUsuario=='especialista' || authlogin.perfilDelUsuario=='paciente')" class="nav-item">
             <a class="nav-link active" aria-current="page" href="#" routerLink="misTurnos">Mis turnos</a>
           </li>
+          <li *ngIf="authlogin.sePudo && authlogin.perfilDelUsuario=='especialista'" class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" routerLink="seccionPacientes">Seccion de pacientes</a>
+          </li>
         </ul>
         <form *ngIf="authlogin.sePudo" class="d-flex" role="search">
           <p class="intentos" style="color: rgb(255, 255, 255); font-size: 20px; margin-right: 20px; padding-top: 13px; margin-bottom: 0px; margin-top: 0px;"><img style="width: 30px; height: 30px; margin: 0px ; margin-bottom: 3px; margin-right: 8px;" src={{authlogin.fotoDelUser}} alt=""><strong>{{authlogin.nombreDelUserQueSeLogueo}}</strong></p>

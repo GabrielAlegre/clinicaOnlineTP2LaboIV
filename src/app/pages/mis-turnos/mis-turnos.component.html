@@ -1,5 +1,6 @@
+<app-loading *ngIf="spinner"></app-loading>
 <body>
-  <div class="contenedor-spinner" *ngIf="spinner">
+  <!-- <div class="contenedor-spinner" *ngIf="spinner">
     <div class="wrapper">
       <div class="circle"></div>
       <div class="circle"></div>
@@ -8,7 +9,7 @@
       <div class="shadow"></div>
       <div class="shadow"></div>
     </div>
-  </div>
+  </div> -->
 
   <div class="turnos" *ngIf="isPaciente">
     <h3 class="fondoParaSubtitulos text-center ">MIS TURNOS</h3>
@@ -155,7 +156,7 @@
           <td>
             <button class="btn btn-secondary btn-cancelar" style="box-shadow: 2px 2px 4px #000; margin-right: 1rem"
               (click)="cancelarTurnoEspecialista(turn)" *ngIf="
-                    turn.estado != 'aceptado' &&
+                    turn.estado == 'aceptado' &&
                     turn.estado != 'realizado' &&
                     turn.estado != 'rechazado' &&
                     turn.estado != 'cancelado' &&
@@ -200,7 +201,7 @@
               Aceptar
             </button>
             <button class="btn btn-success btn-cancelar" style="box-shadow: 2px 2px 4px #000"
-              (click)="finalizarTurno(turn)" *ngIf="turn.estado == 'aceptado'">
+              (click)="finalizarTurno(turn)" *ngIf="turn.estado == 'aceptado' && confirmacionFinalizacion != true">
               Finalizar
             </button>
             <button class="btn btn-success btn-confirmar" style="margin-left: 1rem; box-shadow: 2px 2px 4px #000"
@@ -268,21 +269,21 @@
         <h1 class=" text-center" id="exampleModalLabel">
           Historial clinico
         </h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: white;"></button>
       </div>
       <div class="modal-body">
         <div>
           <p style="display: flex;">
             <span style="font-weight: bolder;">Especialista: </span>
-            {{ turnoFinalizado?.especialista?.apellido }},
+            {{  turnoFinalizado?.especialista?.apellido }},
             {{ turnoFinalizado?.especialista?.nombre }}
 
             <span style="font-weight: bolder; margin-left: 33%;;">Paciente: </span>
-            {{ turnoFinalizado?.paciente?.apellido }},
+            {{  turnoFinalizado?.paciente?.apellido }},
             {{ turnoFinalizado?.paciente?.nombre }}
 
             <span style="font-weight: bolder; margin-left: 33%;; ">Especialidad: </span>
-            {{ turnoFinalizado?.especialidad }}
+            {{  turnoFinalizado?.especialidad }}
           </p>
         </div>
         <form [formGroup]="formHistorial">
@@ -298,7 +299,7 @@
                                     formHistorial.controls['presion'].errors?.['required'] &&
                             formHistorial.controls['presion'].touched
                                               ">
-              La Presión es requerida
+              *La Presión es requerida*
             </small>
           </div>
 
@@ -310,14 +311,14 @@
                   formHistorial.controls['peso'].errors?.['required'] &&
           formHistorial.controls['peso'].touched
                             ">
-              El Peso es requerido
+              *El Peso es requerido*
             </small>
             <small class="mensaje-error" *ngIf="
                   formHistorial.controls['peso'].errors?.['min'] ||
                               (formHistorial.controls['peso'].errors?.['max'] &&
                               formHistorial.controls['peso'].touched)
                             ">
-              El Peso debe ser entre 20 y 150 kg
+              *El Peso debe ser entre 20 y 150 kg*
             </small>
           </div>
 
@@ -329,14 +330,14 @@
                       formHistorial.controls['altura'].errors?.['required'] &&
               formHistorial.controls['altura'].touched
                                 ">
-              La Altura es requerida
+              *La Altura es requerida*
             </small>
             <small class="mensaje-error" *ngIf="
                       formHistorial.controls['altura'].errors?.['min'] ||
                                   (formHistorial.controls['altura'].errors?.['max'] &&
                                   formHistorial.controls['altura'].touched)
                                 ">
-              La altura debe ser de 1 a 2.5 mts
+              *La altura debe ser de 1 a 2.5 mts*
             </small>
           </div>
 
@@ -349,14 +350,14 @@
                   formHistorial.controls['temperatura'].errors?.['required'] &&
           formHistorial.controls['temperatura'].touched
                             ">
-              La Temperatura es requerida
+              *La Temperatura es requerida*
             </small>
             <small class="mensaje-error" *ngIf="
                   formHistorial.controls['temperatura'].errors?.['min'] ||
                               (formHistorial.controls['temperatura'].errors?.['max'] &&
                               formHistorial.controls['temperatura'].touched)
                             ">
-              La Temperatura debe ser entre 35 y 45°C
+              *La Temperatura debe ser entre 35 y 45°C*
             </small>
           </div>
         </form>

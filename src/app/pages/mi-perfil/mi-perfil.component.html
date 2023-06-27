@@ -45,7 +45,7 @@
           (click)="verHistorialClinico()">
           Ver Historial Clínico
         </button>
-        <p *ngIf="!hayHistorial">No hay historial cliníco disponible</p>
+        <p *ngIf="!hayHistorial">No hay ningun historial clinico cargado</p>
       </div>
       <!-- <div class="col">
       </div> -->
@@ -106,11 +106,11 @@
       </div>
       <label class="text-center mb-2 fondoParaSubtitulos" style="font-size: 20px;">Seccion especialidades</label>
       <div class="row" style="display: flex; justify-content: space-evenly; align-items: center;">
-        <button class="btn btn-dark" [ngClass]="especialidad1 ? 'btn-info' : ''"
+        <button class="btn btn-warning" [ngClass]="especialidad1 ? 'btn-info' : ''"
           style="text-transform: uppercase; width: 20rem; margin-top: 0.5rem" (click)="showTurnsOne()">
           {{ user.especialidad[0].nombre }}
         </button>
-        <button *ngIf="user.especialidad[1]" class="btn btn-dark" [ngClass]="especialidad2 ? 'btn-info' : ''"
+        <button *ngIf="user.especialidad[1]" class="btn btn-warning" [ngClass]="especialidad2 ? 'btn-info' : ''"
           style="text-transform: uppercase; width: 20rem; margin-top: 0.5rem" (click)="showTurnsTwo()">
           {{ user.especialidad[1].nombre}}
         </button>
@@ -118,22 +118,22 @@
       <div class="row col-horarios">
         <label class="text-center mb-2" style="font-size: 20px; margin-top: 20px;">Mis Horarios</label>
         <div class="dias-contenedor">
-          <button class="btn btn-dark" [ngClass]="lunes ? 'btn-warning' : ''" (click)="addDay('lunes')">
+          <button class="btn btn-primary" [ngClass]="lunes ? 'btn-success' : ''" (click)="addDay('lunes')">
             Lunes
           </button>
-          <button class="btn btn-dark" [ngClass]="martes ? 'btn-warning' : ''" (click)="addDay('martes')">
+          <button class="btn btn-primary" [ngClass]="martes ? 'btn-success' : ''" (click)="addDay('martes')">
             Martes
           </button>
-          <button class="btn btn-dark" [ngClass]="miercoles ? 'btn-warning' : ''" (click)="addDay('miércoles')">
+          <button class="btn btn-primary" [ngClass]="miercoles ? 'btn-success' : ''" (click)="addDay('miércoles')">
             Miércoles
           </button>
-          <button class="btn btn-dark" [ngClass]="jueves ? 'btn-warning' : ''" (click)="addDay('jueves')">
+          <button class="btn btn-primary" [ngClass]="jueves ? 'btn-success' : ''" (click)="addDay('jueves')">
             Jueves
           </button>
-          <button class="btn btn-dark" [ngClass]="viernes ? 'btn-warning' : ''" (click)="addDay('viernes')">
+          <button class="btn btn-primary" [ngClass]="viernes ? 'btn-success' : ''" (click)="addDay('viernes')">
             Viernes
           </button>
-          <button class="btn btn-dark" [ngClass]="sabado ? 'btn-warning' : ''" (click)="addDay('sábado')">
+          <button class="btn btn-primary" [ngClass]="sabado ? 'btn-success' : ''" (click)="addDay('sábado')">
             Sábado
           </button>
         </div>
@@ -144,7 +144,7 @@
         </button>
       </div>
     </div>
-    <div class="row" *ngIf="isEspecialista">
+    <!-- <div class="row" *ngIf="isEspecialista">
       <div class="col col-horarios-2">
         <label>Mis Horarios</label>
         <div class="dias-contenedor">
@@ -173,7 +173,7 @@
           Aceptar
         </button>
       </div>
-    </div>
+    </div> -->
 
   </div>
   <div class="perfil-container"></div>

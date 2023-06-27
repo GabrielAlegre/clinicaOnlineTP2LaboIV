@@ -7,6 +7,7 @@ import { SweetalertService } from './sweetalert.service';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Administrador } from '../clases/administrador';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ import { Administrador } from '../clases/administrador';
 export class FirestoreService {
   images: string[] = [];
 
-  constructor(private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth, private serviceAlert:SweetalertService) {
+  constructor(private angularFirestore: AngularFirestore, private angularFireAuth: AngularFireAuth, private serviceAlert:SweetalertService, private router:Router) {
   }
 
   guardar(paciente: Paciente) {
@@ -40,7 +41,8 @@ export class FirestoreService {
         fotos: paciente.fotos
       })
       .then(() => {
-        this.serviceAlert.showSuccessAlert("Registro exitoso. Verifique su correo.", "Exito", "success")
+        this.serviceAlert.showSuccessAlert("Registro exitoso. Verifique su correo.", "Exito", "success");
+        this.router.navigateByUrl('/login');
       })
       .catch(()=>{
         this.serviceAlert.showSuccessAlert("Ocurrio un error al registrarse", "Error", "error")
@@ -143,7 +145,8 @@ export class FirestoreService {
         habilitado: especialista.habilitado
       })
       .then(() => {
-        this.serviceAlert.showSuccessAlert("Registro exitoso. Verifique su correo.", "Exito", "success")
+        this.serviceAlert.showSuccessAlert("Registro exitoso. Verifique su correo.", "Exito", "success");
+        this.router.navigateByUrl('/login');
       })
       .catch(()=>{
         this.serviceAlert.showSuccessAlert("Ocurrio un error al registrarse", "Error", "error")
@@ -312,4 +315,36 @@ export class FirestoreService {
     );
     return collection.valueChanges();
   }
+
+  updateUser(userMod: any) {
+    if(userMod.obraSocial)
+    {
+      this.angularFirestore
+        .doc<any>(`pacientes/${userMod.uid}`)
+        .update(userMod)
+        .then(() => { })
+        .catch((error) => {
+          this.serviceAlert.showSuccessAlert('Ocurrio un error', 'Administrador', 'error');
+        });
+    }else if(userMod.especialidad){
+      this.angularFirestore
+        .doc<any>(`especialistas/${userMod.uid}`)
+        .update(userMod)
+        .then(() => { })
+        .catch((error) => {
+          this.serviceAlert.showSuccessAlert('Ocurrio un error', 'Administrador', 'error');
+        });
+    }
+    else
+    {
+      this.angularFirestore
+      .doc<any>(`administradores/${userMod.uid}`)
+      .update(userMod)
+      .then(() => { })
+      .catch((error) => {
+        this.serviceAlert.showSuccessAlert('Ocurrio un error', 'Administrador', 'error');
+      });
+    }
+  }
 }
+

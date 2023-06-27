@@ -71,8 +71,8 @@ body {
 }
 
 .mensaje-error {
-    background: rgba(255, 0, 0, 0.74);
-    color: #fff;
+    background: rgba(0, 0, 0, 0.427);
+    color: #ff0000;
     padding: 0px 5px;
     border-radius: 5px;
     text-shadow: 1px 1px #000;

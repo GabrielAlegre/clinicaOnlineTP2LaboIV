@@ -66,13 +66,14 @@ export class SolicitarTurnoComponent {
             this.pacientesList = users.filter(
               (u: any) => u.obraSocial
             );
-            console.log(this.pacientesList)
+            // console.log(this.pacientesList)
           }
         });
 
         this.firestoreService.getTurnList().subscribe((turnosEspecialista) => {
           this.currentSpecialistTurnList = turnosEspecialista;
         });
+        console.log(this.currentSpecialistTurnList);
       }
     });
 
@@ -95,6 +96,8 @@ export class SolicitarTurnoComponent {
     this.turnsSelectionMenu = true;
     this.speciality = especialidad;
     this.loadFreeHours('');
+    console.log(especialidad);
+    console.log(this.turnosAMostrar);
     this.turnosAMostrar.forEach((t) => {
       this.diasAMostrar.push(t.fecha);
     });
@@ -119,6 +122,7 @@ export class SolicitarTurnoComponent {
     });
     aux.sort((a, b) => a - b);
     this.diasAMostrar = [...aux];
+    console.log(this.diasAMostrar);
   }
 
   loadFreeHours(day: string) {
@@ -126,6 +130,7 @@ export class SolicitarTurnoComponent {
     const listaTurnosDelEspecialista = this.currentSpecialistTurnList.filter(
       (t) => t.especialista.mail == this.activeEspecialista.mail
     );
+    console.log(listaTurnosDelEspecialista);
     const turnosEspecialidad =
       listaTurnosDelEspecialista[0].turnos.filter((t: any) => {
         return (

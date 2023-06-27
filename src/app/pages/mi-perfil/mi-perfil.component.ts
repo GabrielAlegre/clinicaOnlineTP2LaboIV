@@ -98,12 +98,12 @@ export class MiPerfilComponent {
       console.log("entre espe 1");
       if (
         !this.specialistDays.some((d) => d == day) &&
-        !this?.user?.especialidad[0]?.diasTurnos?.some((d: any) => d == day)
+        !this?.user?.especialidad[1]?.diasTurnos?.some((d: any) => d == day)
       ) {
         this.specialistDays.push(day);
         this.notificationService.showSuccessAlert('Día asignado', 'Mi Perfil', 'warning');
         this.activateDeactivateDayButton(day);
-      } else if (this.specialistDays.some((d) => d == day)) {
+      } else if (this.specialistDays.some((d) => d == day)  || this?.user?.especialidad[0]?.diasTurnos?.some((d: any) => d == day)) {
         const index = this.specialistDays.indexOf(day);
         this.specialistDays.splice(index, 1);
         this.notificationService.showSuccessAlert(
@@ -124,12 +124,12 @@ export class MiPerfilComponent {
 
       if (
         !this.specialistDays.some((d) => d == day) &&
-        !this.user.especialidad[1].diasTurnos?.some((d: any) => d == day)
+        !this.user.especialidad[0].diasTurnos?.some((d: any) => d == day)
       ) {
         this.specialistDays.push(day);
         this.notificationService.showSuccessAlert('Día asignado', 'Mi Perfil', 'info');
         this.activateDeactivateDayButton(day);
-      } else if (this.specialistDays.some((d) => d == day)) {
+      } else if (this.specialistDays.some((d) => d == day) || this.user.especialidad[1].diasTurnos?.some((d: any) => d == day)) {
         const index = this.specialistDays.indexOf(day);
         this.specialistDays.splice(index, 1);
         this.notificationService.showSuccessAlert(
@@ -349,17 +349,15 @@ export class MiPerfilComponent {
       this.firestoreService.createTurnList(turno);
     }
 
-    // this.firestoreService.updateUser(this.user);
-    console.log("hola");
-    this.showTurnsTwo();
+    this.firestoreService.updateUser(this.user);
     this.showTurnsOne();
-    console.log("chau");
 
     this.notificationService.showSuccessAlert('Horarios actualizados', 'Mi Perfil', 'success');
   }
 
   showTurnsOne() {
     if (!this.especialidad1) {
+    this.notificationService.showSuccessAlert('Selecciono la especialidad: '+this.user.especialidad[0].nombre, 'Selecciono una especialidad', 'info');
       if(this.user.especialidad[0].duracionTurno!=undefined && this.user.especialidad[0].diasTurnos!=undefined)
       {
         console.log(this.especialidad1);
@@ -375,7 +373,7 @@ export class MiPerfilComponent {
       else{
         this.especialidad1 = true;
         this.especialidad2 = false;
-        console.log("nose que hice especialidad 1");
+        console.log("toco especialidad 1");
         this.user.especialidad[0].duracionTurno="";
         this.user.especialidad[0].diasTurnos=[];
       }
@@ -384,6 +382,7 @@ export class MiPerfilComponent {
 
   showTurnsTwo() {
     if (!this.especialidad2) {
+    this.notificationService.showSuccessAlert('Selecciono la especialidad: '+this.user.especialidad[1].nombre, 'Selecciono una especialidad', 'info');
       if(this.user.especialidad[1].duracionTurno!=undefined && this.user.especialidad[1].diasTurnos!=undefined)
       {
         console.log(this.user.especialidad[1]);
@@ -397,7 +396,7 @@ export class MiPerfilComponent {
         this.activateDayButton();
       }
       else{
-        console.log("nose que hice especialidad 2");
+        console.log("toco especialidad 2");
         this.especialidad1 = false;
         this.especialidad2 = true;
         this.user.especialidad[1].duracionTurno="";
