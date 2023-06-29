@@ -74,6 +74,13 @@ Sección Pacientes, se mostrara los usuarios que el especialista haya atendido a
 En esta sección se podra ver todos los datos relacionados al administrador.
 ![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/48d207dd-5060-4882-a9cf-4667f08316d6)
 
+## Solicitar turno
+En esta sección se realiza la carga de un turno. Se deberá marcar el Paciente al cual le queremos asignar un turno. Luego una vez seleccionado el paciente se elegirá el especialista, la especialidad y el Día y horario del turno.
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/7a78f40d-c403-4b13-8de2-5565e3c2641b)
+
+## Seccion Usuarios
+En esta seccion además de ver la información de los usuarios, se podra habilitar o inhabilitar el acceso al sistema de los usuarios Especialista. También se podrá generar nuevos usuarios, con el mismo requerimiento que en la sección registro. Pero desde esta sección se podrá generar un usuario Administrador.
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/ceb08285-6fa2-44ed-93b1-6bc78a64b368)
 
 
 
