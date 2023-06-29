@@ -20,3 +20,9 @@ pedidos por la web seleccionando el profesional o la especialidad. La duración 
 En el registro se dara la posibilidad de registrarse tanto como paciente o como especialista
 ![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/18ccde15-65fd-4995-adae-f8ab28506dc2)
 
+# Registro PACIENTE
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/80a720c9-7dd2-4890-aab0-bd7e285f053d)
+
+# Registro ESPECIALISTA
+En caso de querer registrase como especialista se tendra la posibilidad de elegir alguna especialidad o agregarla en caso de que no se encuentre entre las existentes
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/70e4817b-5106-4d13-8a70-297a9636de27)
