@@ -52,5 +52,9 @@ En esta sección se realiza la carga de un turno. Se deberá seleccionar:
   - Estas fechas tienen que estar relacionadas al especialista seleccionado y su disponibilidad horaria.
   ![Día y horario](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/9abc64fa-28de-4f9e-84aa-46991fd83b4c)
 
+## Mis turnos
+Se mostrarán los turnos que él usuario solicitó. Esta sección cuentar con un filtro.
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/22ec3b75-e157-4a84-9e06-fd926da3dee2)
+
 
 
