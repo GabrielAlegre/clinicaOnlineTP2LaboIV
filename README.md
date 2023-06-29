@@ -56,5 +56,24 @@ En esta sección se realiza la carga de un turno. Se deberá seleccionar:
 Se mostrarán los turnos que él usuario solicitó. Esta sección cuentar con un filtro.
 ![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/22ec3b75-e157-4a84-9e06-fd926da3dee2)
 
+# ESPECIALISTA
+## Mi perfil
+En esta sección se podra ver todos los datos relacionados al especialista. Ademas podra visualizar Mis horarios donde  el Especialista deberá marcar su disponibilidad horaria en sus diferentes especialidades asociadas.
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/bd8d8bc7-5de6-4246-88b7-5f6a6d8f6944)
+
+## Mis turnos
+Se mostrarán los turnos que él especialista tiene asignados. A su vez desde este listado podrá realizar las siguientes acciones: Cancelar turno. Rechazar turno. Aceptar turno. Finalizar Turno. Ver Reseña.
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/d261de23-90de-46f4-b023-43cde1069357)
+
+## Seccion pacientes
+Sección Pacientes, se mostrara los usuarios que el especialista haya atendido al menos 1 vez.
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/16f07053-06e9-49dc-8171-c3087e0c880e)
+
+# ADMINISTRADOR
+## Mi perfil
+En esta sección se podra ver todos los datos relacionados al administrador.
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/48d207dd-5060-4882-a9cf-4667f08316d6)
+
+
 
 
