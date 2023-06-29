@@ -82,5 +82,20 @@ En esta sección se realiza la carga de un turno. Se deberá marcar el Paciente 
 En esta seccion además de ver la información de los usuarios, se podra habilitar o inhabilitar el acceso al sistema de los usuarios Especialista. También se podrá generar nuevos usuarios, con el mismo requerimiento que en la sección registro. Pero desde esta sección se podrá generar un usuario Administrador.
 ![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/ceb08285-6fa2-44ed-93b1-6bc78a64b368)
 
+## Turnos
+Aqui el administrador podra visualizar todos los turnos de la clínica. Con la opcion de cancelar algun turno.
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/a14f8dec-b9cf-4268-8b44-cfac8088c104)
 
+## Informes
+En esta seccion se proporcionara gráficos y estadísticas del sistema.
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/cf31b0c8-87cf-4be3-82f2-4a4f24888251)
+Todos los informes tendran la opcion de descargarlo tanto en formato PDF o Excel y son los siguientes:
+● Log de ingresos al sistema. Indicando el usuario, día y horario que ingreso al sistema:
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/ca231dcb-45d1-4b5e-8246-2dbbc4b8474b)
+● Cantidad de turnos por especialidad.
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/0d1a43d4-69ed-498e-8960-de19da008332)
+
+● Cantidad de turnos por día.
+● Cantidad de turnos solicitado por médico en un lapso de tiempo.
+● Cantidad de turnos finalizados por médico en un lapso de tiempo.
 
