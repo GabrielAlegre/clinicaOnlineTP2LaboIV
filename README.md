@@ -87,15 +87,27 @@ Aqui el administrador podra visualizar todos los turnos de la clínica. Con la o
 ![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/a14f8dec-b9cf-4268-8b44-cfac8088c104)
 
 ## Informes
-En esta seccion se proporcionara gráficos y estadísticas del sistema.
-![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/cf31b0c8-87cf-4be3-82f2-4a4f24888251)
-Todos los informes tendran la opcion de descargarlo tanto en formato PDF o Excel y son los siguientes:
-● Log de ingresos al sistema. Indicando el usuario, día y horario que ingreso al sistema:
-![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/ca231dcb-45d1-4b5e-8246-2dbbc4b8474b)
-● Cantidad de turnos por especialidad.
-![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/0d1a43d4-69ed-498e-8960-de19da008332)
 
-● Cantidad de turnos por día.
-● Cantidad de turnos solicitado por médico en un lapso de tiempo.
-● Cantidad de turnos finalizados por médico en un lapso de tiempo.
+En esta sección se proporcionarán gráficos y estadísticas del sistema.
+
+![Informe](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/cf31b0c8-87cf-4be3-82f2-4a4f24888251)
+
+Todos los informes tendrán la opción de ser descargados en formato PDF o Excel y son los siguientes:
+
+- Log de ingresos al sistema. Indicando el usuario, día y horario en que ingresó al sistema:
+  ![Log de ingresos](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/ca231dcb-45d1-4b5e-8246-2dbbc4b8474b)
+
+- Cantidad de turnos por especialidad:
+  ![Cantidad de turnos por especialidad](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/0d1a43d4-69ed-498e-8960-de19da008332)
+
+- Cantidad de turnos por día:
+  ![Cantidad de turnos por día](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/cd106529-d824-45f5-a035-8e4bfd2d5f2c)
+
+- Cantidad de turnos solicitados por médico en un lapso de tiempo:
+  ![Cantidad de turnos solicitados por médico](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/24184948-563b-453c-9cb5-afb32d5b7467)
+
+- Cantidad de turnos finalizados por médico en un lapso de tiempo:
+  ![Cantidad de turnos finalizados por médico](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/a8d3cdd8-81a4-4a14-84ad-279bd4daf194)
+
+
 
