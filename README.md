@@ -31,5 +31,9 @@ En caso de querer registrase como especialista se tendra la posibilidad de elegi
 Desde esta sección vamos a ingresar al sistema. Cuenta con botones de acceso rápido.
 ![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/13a15596-3c3d-4c49-9d2d-6b3591794f71)
 
-# Una vez dentro del sistema tendremos múltiples opciones según el usuario con el cual ingresamos
-## Paciente
+# Una vez dentro del sistema tendremos múltiples opciones según el usuario con el cual ingresemos
+# Paciente
+## Mi perfil
+En esta sección se podra ver todos los datos relacionados al paciente. Ademas podra visualizar su historial clinico.
+
+
