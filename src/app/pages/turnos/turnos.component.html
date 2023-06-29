@@ -1,15 +1,5 @@
+<app-loading *ngIf="spinner"></app-loading>
 <body>
-  <div class="contenedor-spinner" *ngIf="spinner">
-    <div class="wrapper">
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="shadow"></div>
-      <div class="shadow"></div>
-      <div class="shadow"></div>
-    </div>
-  </div>
-
   <div class="turnos">
     <h3 class="fondoParaSubtitulos text-center ">Turnos de la clinica</h3>
 
@@ -39,7 +29,7 @@
         </thead>
         <tbody>
           <tr class="tr-tabla" style="cursor: pointer" *ngFor="let turn of turnosFiltrados">
-            <td>{{ (turn.fecha.seconds * 1000) | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+            <td>{{ (turn.fecha) | dayWithHour }}</td>
             <td>
               {{ turn.especialista.apellido }} {{ turn.especialista.nombre }}
             </td>

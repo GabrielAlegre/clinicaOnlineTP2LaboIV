@@ -1,16 +1,5 @@
 <app-loading *ngIf="spinner"></app-loading>
 <body>
-  <!-- <div class="contenedor-spinner" *ngIf="spinner">
-    <div class="wrapper">
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="shadow"></div>
-      <div class="shadow"></div>
-      <div class="shadow"></div>
-    </div>
-  </div> -->
-
   <div class="turnos" *ngIf="isPaciente">
     <h3 class="fondoParaSubtitulos text-center ">MIS TURNOS</h3>
 
@@ -78,7 +67,7 @@
                     cancelacionTurno &&
                     turnoACancelar.fecha.seconds == turn.fecha.seconds
                   " />
-            <button class="btn btn-warning btn-cancelar" style="box-shadow: 2px 2px 4px #000"
+            <button class="btn btn-primary btn-cancelar" style="box-shadow: 2px 2px 4px #000"
               (click)="verComentario(turn)" *ngIf="turn.comentarioPaciente">
               Ver Reseña
             </button>
@@ -232,7 +221,7 @@
                     cancelacionTurno &&
                     turnoACancelar.fecha.seconds == turn.fecha.seconds
                   " />
-            <button class="btn btn-danger btn-cancelar" style="box-shadow: 2px 2px 4px #000; margin-right: 1rem"
+            <button class="btn btn-primary btn-cancelar" style="box-shadow: 2px 2px 4px #000; margin-right: 1rem"
               (click)="verComentario(turn)" *ngIf="turn.comentarioPaciente">
               Ver Reseña
             </button>

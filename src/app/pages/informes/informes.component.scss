@@ -1,0 +1,166 @@
+.informes-container {
+    font-family: "Poppins", sans-serif;
+    background-image: url("https://www.santacreudesign.com/wp-content/uploads/2018/05/DISSENY_INTERIORS_CLINICA_DENTAL_LLABERIA_SALA_DESPATX_OBERT_SOSTRE_CONTINU-1.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+  }
+  
+  .intentos {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 2px black;
+    background-color: rgba(44, 8, 61, 0.87);
+    font-weight: bold;
+    width: max-content;
+    border-radius: 20px;
+    padding: 10px 68px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .fondoParaSubtitulos{
+    width: 80rem;
+    display: block;
+    margin: 0 auto;
+    background-color: rgba(148, 189, 234, 0.703);
+    box-shadow: 0px 5px 5px rgb(158, 199, 204);
+    padding: 5px 15px;
+    /* margin-top: 0.1rem; */
+    border-radius: 20px;
+    margin-bottom: 20px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+  }
+
+  .contenedor-estadisticas {
+    position: absolute;
+    width: 95vw;
+    height: 64vh;
+    top: 17%;
+    left: 2.5%;
+    // transform: translate(-50%, -50%);
+    z-index: 100;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 4px rgb(53, 60, 134);
+    background-color: rgba(44, 8, 61, 0.87);
+
+    p {
+      font-size: 1rem;
+      color: rgb(100, 100, 100);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+  }
+  
+  .carta-especialista {
+    height: 38vh;
+    border: 2px solid #fff;
+    background-color: rgba(255, 255, 255, 0.116);
+    backdrop-filter: blur(10px);
+    box-shadow: 2px 2px 4px #000;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    img {
+      margin-top: 2rem;
+      width: 9rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    p {
+      text-align: center;
+      color: #fff;
+      font-weight: bolder;
+      text-shadow: 1px 1px #000;
+      margin-top: 1rem;
+    }
+    small {
+      display: block;
+      color: #fff;
+      font-size: 1rem;
+      text-align: center;
+    }
+  }
+  
+  // RESPONSIVE
+  
+  @media screen and (max-width: 480px) {
+    .informes-container {
+      min-height: 100vh;
+    }
+    .contenedor-estadisticas {
+      position: absolute;
+      width: 95vw;
+      height: auto;
+      top: 12%;
+      left: 2.5%;
+    }
+    .carta-especialista {
+      width: 98%;
+      height: auto;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+  
+.historia{
+  color: rgb(0, 0, 0);
+}
+
+
+
+th {
+  text-align: center;
+}
+
+td {
+  text-align: center;
+}
+
+.contenedor-tabla {
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 0.1rem;
+  /* background-color: rgba(0, 0, 0, 0.7); */
+  background-color: rgba(33, 0, 51, 0.7);
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0 0 8px rgb(8, 123, 161);
+}
+
+.tr-tabla:hover {
+  background: rgba(105, 159, 177, 0.688);
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.btn-estilos {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  border-radius: 30px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  display: block;
+  width: 193px;
+  height: 40px;
+  margin-bottom: 5px;
+  color: white; 
+  background-color: #490a91;
+  border-color: #000000;
+}
+
+.btn-estilos:hover {
+  /* background-color: rgba(131, 3, 87, 0.87); */
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+

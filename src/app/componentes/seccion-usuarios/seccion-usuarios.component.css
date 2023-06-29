@@ -46,7 +46,7 @@
 
 
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 480px) {
   .listado-container {
     font-size: 12px;
   }
@@ -60,9 +60,9 @@ td {
   text-align: center;
 }
 
-.preguntas{
+.preguntas {
   display: flex;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   /* align-items: center; */
 }
 
@@ -82,13 +82,37 @@ td {
   height: 40px;
 }
 
-.btn-habilitado{
+.btn-usuario {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #ffffff;
+  border-radius: 30px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  display: block;
+  width: 193px;
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+.btn-usuario:hover {
+  /* background-color: rgba(131, 3, 87, 0.87); */
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+
+.btn-habilitado {
   background-color: #0d6b08;
 }
 
-.btn-noHabilitado{
+.btn-noHabilitado {
   background-color: #9c1414;
-  color:white;
+  color: white;
 }
 
 
@@ -103,12 +127,23 @@ td {
   transform: translateY(-1px);
 }
 
-.fondoParaTextos{
+.fondoParaTextos {
   width: max-content;
   display: block;
   margin: 0 auto;
   background-color: rgba(51, 193, 236, 0.87);
   box-shadow: 0px 5px 5px rgb(15, 3, 185);
+  padding: 5px 15px;
+  /* margin-top: 0.1rem; */
+  border-radius: 20px;
+}
+
+.fondoParaTextosDePerfil {
+  width: max-content;
+  display: block;
+  margin: 0 auto;
+  background-color: rgba(95, 124, 77, 0.87);
+  box-shadow: 0px 5px 5px rgb(12, 12, 12);
   padding: 5px 15px;
   /* margin-top: 0.1rem; */
   border-radius: 20px;
@@ -128,6 +163,20 @@ td {
   margin: 0 auto;
 }
 
+.fondoCardsUsuarios {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 2px black;
+  background-color: rgba(44, 8, 61, 0.87);
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 10px 20px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px; 
+  width: 98%;
+}
 
 .intentosTextos {
   text-align: center;
@@ -143,9 +192,9 @@ td {
   margin: 0 auto;
 }
 
-.botonesRegistros{
+.botonesRegistros {
   display: flex;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -167,4 +216,78 @@ td {
   background-color: #83bf9b;
   color: black;
   font-weight: 400;
+}
+
+
+/* card */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  /* width: max-content; */
+  justify-content: start;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 230px;
+  height: 300px;
+  background-color: rgba(255, 255, 255, 0.116);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px #000;
+}
+
+.card:hover {
+  background: rgb(189, 138, 191);
+  transition: background 0.5s;
+  cursor: pointer;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.card-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-perfil {
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+  /* border-radius: 50%; */
+  border: 1px outset #ffffffa6;
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  background: #0e553f;
+}
+
+.carta-historial h3 {
+
+  color: #fff;
+  background: rgb(53, 53, 53);
+  font-weight: bolder;
+  padding: 1rem;
+
+
+}
+
+.carta-historial span {
+  font-weight: bolder;
+}
+
+.historia{
+  color: white;
 }

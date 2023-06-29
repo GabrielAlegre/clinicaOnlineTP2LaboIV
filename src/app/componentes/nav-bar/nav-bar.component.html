@@ -19,10 +19,13 @@
             <a class="nav-link active" aria-current="page" href="#" routerLink="miPerfil">Mi perfil</a>
           </li>
           <li *ngIf="authlogin.sePudo && authlogin.perfilDelUsuario=='administrador'" class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" routerLink="seccionUsuarios">Seccion de usuario</a>
+            <a class="nav-link active" aria-current="page" href="#" routerLink="/administrador/seccionUsuarios">Seccion de usuario</a>
           </li>
           <li *ngIf="authlogin.sePudo && authlogin.perfilDelUsuario=='administrador'" class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" routerLink="turnos">Turnos</a>
+            <a class="nav-link active" aria-current="page" href="#" routerLink="/administrador/turnos">Turnos</a>
+          </li>
+          <li *ngIf="authlogin.sePudo && authlogin.perfilDelUsuario=='administrador'" class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" routerLink="/administrador/informes">Informes</a>
           </li>
           <li *ngIf="authlogin.sePudo && (authlogin.perfilDelUsuario=='administrador' || authlogin.perfilDelUsuario=='paciente')" class="nav-item">
             <a class="nav-link active" aria-current="page" href="#" routerLink="solicitarTurno">Solicitar turno</a>

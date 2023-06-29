@@ -226,4 +226,21 @@ export class SolicitarTurnoComponent {
       this.loadFreeHours('');
     }, 1000);
   }
+
+  volverMenuElegirEspecialista()
+  {
+    // this.activeEspecialista=null;
+    this.router.navigate(['/solicitarTurno']);
+    this.specialistSelectionMenu = true;
+    this.activeEspecialista = false;
+    this.turnsSelectionMenu = false;
+  }
+
+  volverMenuPrincipal2() {
+    this.router.navigate(['/solicitarTurno']);
+    this.patientSelectionMenu = true;
+    this.specialistSelectionMenu = true;
+    this.activeEspecialista = false;
+    this.turnsSelectionMenu = false;
+  }
 }

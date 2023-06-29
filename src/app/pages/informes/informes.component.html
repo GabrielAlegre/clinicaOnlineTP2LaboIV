@@ -1,0 +1,290 @@
+<app-loading *ngIf="spinner"></app-loading>
+
+<div class="contenedor-estadisticas">
+  <div>
+    <h3 class="text-center fondoParaSubtitulos" style="color: dark; margin-bottom: 3rem;">INFORMES</h3>
+    <h4 class="text-center" style="color: white; margin-bottom: 0.7rem;">Bienvenido Administrador! En esta seccion le
+      proporcionaremos gráficos y estadísticas del sistema.</h4>
+    <h5 class="text-center" style="color: white; margin-bottom: 2rem;">Seleccione que estadistica desea visualizar:</h5>
+    <div class="row">
+      <div class="col carta-especialista" data-bs-toggle="modal" data-bs-target="#modalLogUsuarios" [appTarjeta]="'log'"
+        [appHover]="'violeta'"></div>
+      <div class="col carta-especialista" data-bs-toggle="modal" data-bs-target="#modalTurnosPorEspecialidad"
+        [appTarjeta]="'especialidad'" [appHover]="'violeta'"></div>
+      <div class="col carta-especialista" data-bs-toggle="modal" data-bs-target="#modalTurnosPorDia"
+        [appTarjeta]="'dia'" [appHover]="'violeta'"></div>
+      <div class="col carta-especialista" data-bs-toggle="modal" data-bs-target="#modalTurnosFinalizadosPorMedico"
+        [appTarjeta]="'finalizados'" [appHover]="'violeta'"></div>
+      <div class="col carta-especialista" data-bs-toggle="modal" data-bs-target="#modalTurnosSolicitadosPorMedico"
+        [appTarjeta]="'solicitados'" [appHover]="'violeta'"></div>
+    </div>
+  </div>
+</div>
+
+<div class="informes-container"></div>
+
+<!-- MODAL DE LOG DE USUARIOS -->
+<div class="modal fade historia" id="modalLogUsuarios" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background: rgb(110, 182, 190); width: 40rem;">
+      <div class="modal-header" style="background: rgb(110, 182, 190); width: 40rem;">
+        <button type="button" [appBoton]="'pdf'" style="margin-right: 1rem; margin-bottom: 1rem"
+          (click)="descargarPDFLogs()" class="btn-estilos">
+          Descargar PDF
+        </button>
+        <button type="button" [appBoton]="'excel'" style="margin-bottom: 1rem" (click)="descargarExcelLogs()"
+          class="btn-estilos">
+          Descargar EXCEL
+        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="pdflogs">
+          <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem">
+            <h2 class="fondoParaSubtitulos" style="
+              text-align: center;
+              font-size: 1.5rem;
+              font-weight: bolder;
+              width: 20rem;
+              margin-bottom: 1rem;
+            " id="exampleModalLabel">
+              CLÍNICA ONLINE
+            </h2>
+            <img src="../../../assets/historia-clinica.png" style="width: 100px" alt="logo" />
+          </div>
+          <h1 style="text-align: center; font-size: 1.5rem; margin-bottom: 20px;">Informe: Log de los ingresos al
+            sistema</h1>
+          <table class="table contenedor-tabla">
+            <thead>
+              <tr>
+                <th scope="col">FECHA</th>
+                <!-- <th scope="col">ID</th> -->
+                <th scope="col">PERFIL</th>
+                <th scope="col">NOMBRE</th>
+                <th scope="col">APELLIDO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="tr-tabla" *ngFor="let log of listaLogs">
+                <td>
+                  {{ log.fecha | dayWithHour}}
+                </td>
+                <!-- <td>{{ log.id }}</td> -->
+                <td>{{ log.perfil }}</td>
+                <td>{{ log.nombre }}</td>
+                <td>{{ log.apellido }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE TURNOS POR ESPECIALIDAD -->
+<div class="modal fade modal-xl" id="modalTurnosPorEspecialidad" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background: rgb(110, 182, 190); width: 50rem;">
+      <div class="modal-header" style="background: rgb(110, 182, 190); width: 50rem;">
+        <button type="button" [appBoton]="'pdf'" style="margin-right: 1rem; margin-bottom: 1rem"
+          (click)="descargarPDFTurnosPorEspecialidad() " class="btn-estilos">
+          Descargar PDF
+        </button>
+        <button type="button" [appBoton]="'excel'" style="margin-bottom: 1rem"
+          (click)="descargarExcelTurnosPorEspecialidad() " class="btn-estilos">
+          Descargar EXCEL
+        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="pdfTurnosPorEspecialidad">
+          <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem">
+            <h2 class="fondoParaSubtitulos" style="
+              text-align: center;
+              font-size: 1.5rem;
+              font-weight: bolder;
+              width: 20rem;
+              margin-bottom: 1rem;
+            " id="exampleModalLabel">
+              CLÍNICA ONLINE
+            </h2>
+            <img src="../../../assets/historia-clinica.png" style="width: 100px" alt="logo" />
+          </div>
+          <h1 style="text-align: center; font-size: 1.5rem">
+            Informe: Cantidad de turnos por especialidad
+          </h1>
+          <div style="margin-top: 1rem; width: 65%; margin-left: 20%">
+            <canvas id="turnosPorEspecialidad"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE TURNOS POR DIA -->
+<div class="modal fade modal-xl" id="modalTurnosPorDia" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background: rgb(110, 182, 190); width: 50rem;">
+      <div class="modal-header" style="background: rgb(110, 182, 190); width: 50rem;">
+        <button type="button" [appBoton]="'pdf'" style="margin-right: 1rem; margin-bottom: 1rem"
+          (click)="descargarPDFTurnosPorDia()" class="btn-estilos">
+          Descargar PDF
+        </button>
+        <button type="button" [appBoton]="'excel'" style="margin-bottom: 1rem" (click)="descargarExcelTurnosPorDia()"
+          class="btn-estilos">
+          Descargar EXCEL
+        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="pdfTurnosPorDia">
+          <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem">
+            <h2 class="fondoParaSubtitulos" style="
+              text-align: center;
+              font-size: 1.5rem;
+              font-weight: bolder;
+              width: 20rem;
+              margin-bottom: 1rem;
+            " id="exampleModalLabel">
+              CLÍNICA ONLINE
+            </h2>
+            <img src="../../../assets/historia-clinica.png" style="width: 100px" alt="logo" />
+          </div>
+          <h1 style="text-align: center; font-size: 1.5rem">Informe: Cantidad de turnos por dia</h1>
+          <div style="margin-top: 3rem tpesp">
+            <canvas id="turnosPorDia"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE TURNOS SOLICITADOS POR MEDICO EN UN LAPSO DE TIEMPO -->
+<div class="modal fade modal-xl" id="modalTurnosSolicitadosPorMedico" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background: rgb(110, 182, 190); width: 50rem;">
+      <div class="modal-header" style="background: rgb(110, 182, 190); width: 50rem;">
+        <button type="button" [appBoton]="'pdf'" style="margin-right: 1rem; margin-bottom: 1rem"
+          (click)="descargarPDFTurnosSolicitadosPorMedico()" class="btn-estilos">
+          Descargar PDF
+        </button>
+        <button type="button" class="btn btn-success" style="margin-bottom: 1rem"
+          (click)="descargarExcelTurnosSolicitadosPorMedico()" class="btn-estilos">
+          Descargar EXCEL
+        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <br />
+        <div id="pdfTurnosSolicitadosPorMedico">
+          <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem">
+            <h2 class="fondoParaSubtitulos" style="
+              text-align: center;
+              font-size: 1.5rem;
+              font-weight: bolder;
+              width: 20rem;
+              margin-bottom: 1rem;
+            " id="exampleModalLabel">
+              CLÍNICA ONLINE
+            </h2>
+            <img src="../../../assets/historia-clinica.png" style="width: 100px" alt="logo" />
+          </div>
+          <h1 style="text-align: center; font-size: 1.5rem">
+            Turnos solicitados en los proximos
+            {{ btn15Dias ? "15 días" : "7 días" }}
+          </h1>
+          <div style="margin-top: 1rem; width: 50%; margin-left: 20%" *ngIf="banderaChartSolicitados">
+            <canvas id="turnosSolicitadosPorMedico"></canvas>
+          </div>
+        </div>
+        <div style="
+        display: block;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1rem;
+      ">
+          <label style="font-size: 1rem; font-weight: bolder; margin-right: 2rem">Filtrar por:
+          </label>
+          <button class="btn" [ngClass]="btn7Dias ? 'btn-success' : 'btn-info'" style="margin-right: 1rem"
+            (click)="filtrarTurnosPorDias(7)">
+            7 DÍAS
+          </button>
+          <button class="btn" [ngClass]="btn15Dias ? 'btn-success' : 'btn-info'" style="margin-right: 1rem"
+            (click)="filtrarTurnosPorDias(15)">
+            15 DÍAS
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE TURNOS FINALIZADOS POR MEDICO EN UN LAPSO DE TIEMPO -->
+<div class="modal fade modal-xl" id="modalTurnosFinalizadosPorMedico" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background: rgb(110, 182, 190); width: 50rem;">
+      <div class="modal-header" style="background: rgb(110, 182, 190); width: 50rem;">
+        <button type="button" [appBoton]="'pdf'" style="margin-right: 1rem; margin-bottom: 1rem"
+          (click)="descargarPDFTurnosFinalizadosPorMedico()" class="btn-estilos">
+          Descargar PDF
+        </button>
+        <button type="button" [appBoton]="'excel'" style="margin-bottom: 1rem"
+          (click)="descargarExcelTurnosFinalizadosPorMedico()" class="btn-estilos">
+          Descargar EXCEL
+        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <br />
+        <div id="pdfTurnosFinalizadosPorMedico">
+          <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem">
+            <h2 class="fondoParaSubtitulos" style="
+              text-align: center;
+              font-size: 1.5rem;
+              font-weight: bolder;
+              width: 20rem;
+              margin-bottom: 1rem;
+            " id="exampleModalLabel">
+              CLÍNICA ONLINE
+            </h2>
+            <img src="../../../assets/historia-clinica.png" style="width: 100px" alt="logo" />
+          </div>
+          <h1 style="text-align: center; font-size: 1.5rem">
+            TURNOS FINALIZADOS POR MÉDICO HACE
+            {{ btn15DiasFinalizado ? "15 DÍAS" : "7 DÍAS" }}
+          </h1>
+          <div style="margin-top: 1rem; width: 50%; margin-left: 20%" *ngIf="banderaChartFinalizados">
+            <canvas id="turnosFinalizadosPorMedico"></canvas>
+          </div>
+        </div>
+        <div style="
+        display: block;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1rem;
+      ">
+          <label style="font-size: 1rem; font-weight: bolder; margin-right: 2rem">FILTRO:
+          </label>
+          <button class="btn" [ngClass]="btn7DiasFinalizado ? 'btn-success' : 'btn-info'" style="margin-right: 1rem"
+            (click)="filtrarTurnosPorDiasFinalizados(7)">
+            7 DÍAS
+          </button>
+          <button class="btn" [ngClass]="btn15DiasFinalizado ? 'btn-success' : 'btn-info'" style="margin-right: 1rem"
+            (click)="filtrarTurnosPorDiasFinalizados(15)">
+            15 DÍAS
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

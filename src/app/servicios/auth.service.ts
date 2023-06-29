@@ -48,7 +48,7 @@ export class AuthService {
     );
   }
 
-  login(email: string | any, password: string | any, esRegistro: number, nombreUser?: string, foto?: string, perfil?: string) {
+  login(email: string | any, password: string | any, esRegistro: number, nombreUser?: string, foto?: string, perfil?: string, userQueSeLogeo?:any) {
     firebase.auth().signInWithEmailAndPassword(email, password).then(
       response => {
         firebase.auth().currentUser?.getIdToken().then(
@@ -73,6 +73,7 @@ export class AuthService {
               if (esRegistro == 0) {
 
                 this.serviceAlert.showSuccessAlert(`Login exitoso`, "Bienvenido " + nombreUser + "!", 'success');
+                this.serviceFirestore.createUserLog(userQueSeLogeo);
               }
               else {
                 this.serviceAlert.showSuccessAlert(`Se registro correctamente al usuario `, "excelente!", 'success');

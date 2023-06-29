@@ -29,7 +29,14 @@ import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
 import { SolicitarTurnoComponent } from './pages/solicitar-turno/solicitar-turno.component';
 import { SeccionPacientesComponent } from './pages/seccion-pacientes/seccion-pacientes.component';
-
+import { InformesComponent } from './pages/informes/informes.component';
+import { HoverDirective } from './directivas/hover.directive';
+import { BotonDirective } from './directivas/boton.directive';
+import { TarjetaDirective } from './directivas/tarjeta.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DayWithHourPipe } from './pipes/day-with-hour.pipe';
+import { DayDatePipe } from './pipes/day-date.pipe';
+import { DatePipe } from './pipes/date.pipe';
 
 @NgModule({
   declarations: [
@@ -49,10 +56,18 @@ import { SeccionPacientesComponent } from './pages/seccion-pacientes/seccion-pac
     TurnosComponent,
     SolicitarTurnoComponent,
     SeccionPacientesComponent,
+    InformesComponent,
+    HoverDirective,
+    BotonDirective,
+    TarjetaDirective,
+    DayWithHourPipe,
+    DayDatePipe,
+    DatePipe,
   ],
   imports: [
     FormsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),

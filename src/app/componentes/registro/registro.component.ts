@@ -5,6 +5,7 @@ import { FirestoreService } from 'src/app/servicios/firestore.service';
 import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
 import { SweetalertService } from 'src/app/servicios/sweetalert.service';
 import { Especialista } from 'src/app/clases/especialista';
+import { slideInAnimation } from 'src/app/animations'; // Ajusta la ruta al archivo según corresponda
 
 @Component({
   selector: 'app-registro',

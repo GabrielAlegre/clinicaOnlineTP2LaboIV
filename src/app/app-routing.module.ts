@@ -12,21 +12,26 @@ import { SolicitarTurnoComponent } from './pages/solicitar-turno/solicitar-turno
 import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
 import { SeccionPacientesComponent } from './pages/seccion-pacientes/seccion-pacientes.component';
+import { InformesComponent } from './pages/informes/informes.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "home", component: HomeComponent},
   {path: "registro", component: RegistroComponent},
-  {path: "login", component: LoginComponent},
+  {path: "login", component: LoginComponent, data: { animation: 'Login'}},
+  {path: "solicitarTurno", component: SolicitarTurnoComponent, data: { animation: 'Perfil'}},
   {path: "listadoUsers", component: ListadoUsuariosComponent},
-  {path: "seccionUsuarios", component:SeccionUsuariosComponent},
+  // {path: "seccionUsuarios", component:SeccionUsuariosComponent},
+  {path: "administrador", component: SeccionUsuariosComponent, children: [{path: "seccionUsuarios", component:SeccionUsuariosComponent}]},
   {path: "regisAdmin", component:RegistroAdministradorComponent},
   {path: "accesos", component: AccesosComponent},
   {path: "misTurnos", component: MisTurnosComponent},
-  {path: "solicitarTurno", component: SolicitarTurnoComponent},
   {path: "miPerfil", component: MiPerfilComponent},
-  {path: "turnos", component: TurnosComponent},
+  // {path: "turnos", component: TurnosComponent},
+  {path: "administrador", component: TurnosComponent, children: [{path: "turnos", component: TurnosComponent}]},
   {path: "seccionPacientes", component: SeccionPacientesComponent},
+  // {path: "informes", component: InformesComponent},
+  {path: "administrador", component: InformesComponent, children: [{path: "informes", component: InformesComponent}]},
 ];
 
 

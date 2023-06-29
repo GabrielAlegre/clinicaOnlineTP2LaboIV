@@ -346,5 +346,34 @@ export class FirestoreService {
       });
     }
   }
+
+  createUserLog(user: any) {
+    const log: any = {};
+    log.fecha = new Date();
+    log.uid = user.uid;
+    if(user.obraSocial)
+    {
+      log.perfil = "Paciente";
+    }
+    else if(user.especialidad)
+    {
+      log.perfil ="Especialista";
+    }
+    else
+    {
+      log.perfil = "Administrador";
+    }
+    log.nombre = user.nombre;
+    log.apellido = user.apellido;
+    return this.angularFirestore.collection('logUsuarios').add(log);
+  }
+
+  getUsersLog() {
+    const collection = this.angularFirestore.collection<any>(
+      'logUsuarios',
+      (ref) => ref.orderBy('fecha', 'desc')
+    );
+    return collection.valueChanges();
+  }
 }
 

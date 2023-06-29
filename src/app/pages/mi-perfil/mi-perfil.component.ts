@@ -4,7 +4,8 @@ import { AuthService } from '../../servicios/auth.service';
 import { FirestoreService } from '../../servicios/firestore.service';
 import { SweetalertService } from '../../servicios/sweetalert.service';
 import { jsPDF } from 'jspdf';
-
+import html2canvas from 'html2canvas';
+import { slideInAnimation } from 'src/app/animations'; // Ajusta la ruta al archivo según corresponda
 
 @Component({
   selector: 'app-mi-perfil',
@@ -35,12 +36,15 @@ export class MiPerfilComponent {
   historialClinicoFiltrado: any[] = [];
   hayHistorial: boolean = false;
   hayHistorialFiltrado: boolean = true;
-  btnTodo: boolean = true;
   btnClinico: boolean = false;
   btnOdontologo: boolean = false;
   btnOftalmologo: boolean = false;
-
+  
   fechaActual: Date = new Date();
+  
+  listaEspecialidades: any[] = [];
+  especialidadSeleccionada: string | null = null;
+  btnTodo: boolean = true;
 
   constructor(
     public authService: AuthService,
@@ -52,6 +56,13 @@ export class MiPerfilComponent {
   ngOnInit(): void {
     this.showTurnsOne();
     this.spinner = true;
+
+    this.firestoreService.traerEspecialistas().subscribe((especialistas) => {
+      especialistas.forEach((especialista) => {
+        const nombresEspecialidades = especialista.especialidad.map((especialidad: any) => especialidad.nombre);
+        this.listaEspecialidades = this.listaEspecialidades.concat(nombresEspecialidades);
+      });
+    });
 
     this.authService.user$.subscribe((user: any) => {
       // console.log(user);
@@ -422,37 +433,13 @@ export class MiPerfilComponent {
   }
 
   filtrarHistorialClinico(especialidad: string) {
-    switch (especialidad) {
-      case 'todo':
-        this.btnTodo = true;
-        this.btnClinico = false;
-        this.btnOdontologo = false;
-        this.btnOftalmologo = false;
-        break;
-      case 'clinico':
-        this.btnTodo = false;
-        this.btnClinico = true;
-        this.btnOdontologo = false;
-        this.btnOftalmologo = false;
-        break;
-      case 'odontologo':
-        this.btnTodo = false;
-        this.btnClinico = false;
-        this.btnOdontologo = true;
-        this.btnOftalmologo = false;
-        break;
-      case 'oftalmologo':
-        this.btnTodo = false;
-        this.btnClinico = false;
-        this.btnOdontologo = false;
-        this.btnOftalmologo = true;
-        break;
-    }
-
+    this.especialidadSeleccionada = especialidad;
     this.historialClinicoFiltrado = [];
     if (especialidad == 'todo') {
+      this.btnTodo=true;
       this.historialClinicoFiltrado = [...this.historialClinico];
     } else {
+      this.btnTodo=false;
       for (let i = 0; i < this.historialClinico.length; i++) {
         const historial = this.historialClinico[i];
         if (historial.especialidad == especialidad) {
@@ -469,15 +456,18 @@ export class MiPerfilComponent {
   }
 
   crearPDF() {
+    this.spinner=true;
     const DATA = document.getElementById('pdf');
     const doc = new jsPDF('p', 'pt', 'a4');
     const options = {
-      background: 'white',
-      scale: 2,
+      background: 'black',
+      scale: 4,
     };
+    console.log(DATA);
     //@ts-ignore
     html2canvas(DATA, options)
-      .then((canvas: any) => {
+    .then((canvas: any) => {
+        console.log("hola");
         const img = canvas.toDataURL('image/PNG');
 
         const bufferX = 30;
@@ -498,7 +488,13 @@ export class MiPerfilComponent {
         return doc;
       })
       .then((docResult: any) => {
-        docResult.save(`historial_clinico.pdf`);
+        docResult.save(`historialClinico-${this.user.apellido}.${this.user.nombre}.pdf`);
+        this.spinner=false;
+        this.notificationService.showSuccessAlert(`Historial clinico de ${this.user.apellido} ${this.user.nombre} descargado exitosamente`, 'Historial clinico descargado', 'success');
       });
+  }
+
+  isEspecialidadSelected(especialidad: string): boolean {
+    return this.especialidadSeleccionada === especialidad;
   }
 }
