@@ -11,3 +11,12 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
 disponibilidad, y reciben en ellos pacientes con turno para consulta o tratamiento. Dichos turnos son
 pedidos por la web seleccionando el profesional o la especialidad. La duración mínima de un turno es
 30 minutos.
+
+# Inicio
+
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/c37d1ce2-d43c-4796-9796-cd105332ffb3)
+
+# Registro
+En el registro se dara la posibilidad de registrarse tanto como paciente o como especialista
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/18ccde15-65fd-4995-adae-f8ab28506dc2)
+
