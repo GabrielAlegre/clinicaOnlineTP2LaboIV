@@ -33,7 +33,8 @@ Desde esta sección vamos a ingresar al sistema. Cuenta con botones de acceso r�
 
 # Una vez dentro del sistema tendremos múltiples opciones según el usuario con el cual ingresemos
 <div align="center">
-# Paciente
+  <p># Paciente</p>
+
 </div>
 ## Mi perfil
 En esta sección se podra ver todos los datos relacionados al paciente. Ademas podra visualizar su historial clinico.
