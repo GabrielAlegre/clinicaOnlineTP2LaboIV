@@ -35,5 +35,10 @@ Desde esta sección vamos a ingresar al sistema. Cuenta con botones de acceso r�
 # Paciente
 ## Mi perfil
 En esta sección se podra ver todos los datos relacionados al paciente. Ademas podra visualizar su historial clinico.
+<div align="center">
+  <p>Una breve descripción de mi proyecto.</p>
+</div>
+
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/da8dfaa3-535d-4111-9c5e-28d3899e911e)
 
 
