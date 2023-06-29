@@ -32,12 +32,22 @@ Desde esta sección vamos a ingresar al sistema. Cuenta con botones de acceso r�
 ![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/13a15596-3c3d-4c49-9d2d-6b3591794f71)
 
 # Una vez dentro del sistema tendremos múltiples opciones según el usuario con el cual ingresemos
-<div align="center">
-  <p># Paciente</p>
-
-</div>
+# PACIENTE
 ## Mi perfil
 En esta sección se podra ver todos los datos relacionados al paciente. Ademas podra visualizar su historial clinico.
 ![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/da8dfaa3-535d-4111-9c5e-28d3899e911e)
+
+## Solicitar Turno
+En esta sección se realiza la carga de un turno. Se deberá seleccionar:
+■ Especialista
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/141ae2a9-076f-4ddd-abf7-89dfd54ca350)
+
+■ Especialidad
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/5bcbb157-8037-4ba4-8c45-7c1803dab7ad)
+
+■ Día y horario del turno.
+● El paciente debe tener la posibilidad de elegir turno dentro de los próximos 15 días.
+● Estas fechas tienen que estar relacionadas al especialistaseleccionado y su disponibilidad horaria.
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/9abc64fa-28de-4f9e-84aa-46991fd83b4c)
 
 
