@@ -16,10 +16,6 @@ pedidos por la web seleccionando el profesional o la especialidad. La duración 
 
 ![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/c37d1ce2-d43c-4796-9796-cd105332ffb3)
 
-#Inicio de sesión
-Desde esta sección vamos a ingresar al sistema. Cuenta con botones de acceso rápido.
-![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/13a15596-3c3d-4c49-9d2d-6b3591794f71)
-
 # Registro
 En el registro se dara la posibilidad de registrarse tanto como paciente o como especialista
 ![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/18ccde15-65fd-4995-adae-f8ab28506dc2)
@@ -31,3 +27,9 @@ En el registro se dara la posibilidad de registrarse tanto como paciente o como 
 En caso de querer registrase como especialista se tendra la posibilidad de elegir alguna especialidad o agregarla en caso de que no se encuentre entre las existentes
 ![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/70e4817b-5106-4d13-8a70-297a9636de27)
 
+# Inicio de sesión
+Desde esta sección vamos a ingresar al sistema. Cuenta con botones de acceso rápido.
+![image](https://github.com/GabrielAlegre/clinicaOnlineTP2LaboIV/assets/86837104/13a15596-3c3d-4c49-9d2d-6b3591794f71)
+
+# Una vez dentro del sistema tendremos múltiples opciones según el usuario con el cual ingresamos
+## Paciente
